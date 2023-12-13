@@ -179,3 +179,35 @@ foo
 stacked_bar_chart <- create_stacked_bar_chart(combined_data,x_scale=100, y_scale=100, width=100)
 print(stacked_bar_chart)
 
+
+##Updated function to include reshaping data in create_stacked_bar_chart
+create_stacked_bar_chart <- function(deconProp, pos, x_scale = 1, y_scale = 1, width = 1) {
+  # Reshape the data
+  data_long <- as.data.frame(deconProp)
+  data_long$spot <- rownames(data_long)
+  tidy_data <- tidyr::pivot_longer(data_long, cols = -spot, names_to = "cell_type", values_to = "proportion")
+  colnames(pos)[1] <- "x"
+  pos$spot <- rownames(pos)
+  rownames(pos) <- NULL
+  combined_data <- merge(tidy_data, pos, by = "spot")
+  
+  # Calculate cumulative proportions for each (x, y) spot
+  combined_data <- combined_data %>%
+    group_by(x, y) %>%
+    # Ensures that the heights of the bars within a spot add up to 1
+    mutate(cumulative_proportion = cumsum(proportion) - proportion)
+  
+  # Apply scaling factors to x and y coordinates
+  scaled_combined_data <- combined_data %>%
+    mutate(x = x * x_scale, y = y * y_scale)
+  
+  # Correct positioning of bars within each (x, y) spot
+  p <- ggplot(scaled_combined_data, aes(x = x, y = y + cumulative_proportion + proportion/2)) +
+    geom_tile(aes(fill = cell_type, height = proportion), width = width, lwd = 0) +
+    theme_bw() +
+    labs(title = "v2 alt. visual", x = "X", y = "Y")
+  
+  return(p)
+}
+
+
