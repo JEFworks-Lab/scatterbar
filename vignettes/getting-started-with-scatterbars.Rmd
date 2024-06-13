@@ -1,0 +1,26 @@
+---
+title: "getting-started-with-scatterbars"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{getting-started-with-scatterbars}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(scatterbar)
+data("deconProp")
+data("pos")
+
+plot(pos)
+head(deconProp)
+
+scatterbar::create_scatterbar(deconProp, pos)
+```

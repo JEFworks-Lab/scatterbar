@@ -21,6 +21,7 @@
 #' @import dplyr
 #'
 #' @export
+#' 
 create_scatterbar <- function(deconProp, pos, x_scale = 1, y_scale = 1, width = 1) {
   # Reshape the data
   data_long <- as.data.frame(deconProp)
