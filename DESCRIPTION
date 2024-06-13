@@ -1,0 +1,14 @@
+Package: scatterbar
+Type: Package
+Version: 0.1.1
+Authors@R: 
+    person("Dee", "Velazquez", , "dvelazq5@jhu.edu", role = c("aut", "cre"),
+           comment = c(ORCID = "0009-0004-4380-4794"))
+Maintainer: Dee <dvelazq5@jhu.edu>
+Description: Creates a stacked bar chart using ggplot2, where the bars are
+    stacked based on the proportions of different cell types in each (x, y) spot.
+License: Open Source
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.2.3
+
