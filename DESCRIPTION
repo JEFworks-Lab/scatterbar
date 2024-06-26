@@ -1,19 +1,29 @@
 Package: scatterbar
+Title: Scattered Stacked Bar Chart Plots
 Type: Package
 Version: 0.1.1
+Imports:
+    dplyr,
+    tidyr,
+    ggplot2
 Authors@R: 
-    person("Dee", "Velazquez", , "dvelazq5@jhu.edu", role = c("aut", "cre"),
-           comment = c(ORCID = "0009-0004-4380-4794"))
-Maintainer: Dee <dvelazq5@jhu.edu>
-Description: Creates a stacked bar chart using ggplot2, where the bars are
-    stacked based on the proportions of different cell types in each (x, y) spot.
-License: Open Source
+    c(person("Dee", "Velazquez", email = "dvelazq5@jhu.edu", 
+    role = c("aut", "cre"), 
+    comment = c(ORCID = "0009-0004-4380-4794")),
+    person("Jean", "Fan", email = "jeanfan@jhu.edu", 
+    role = c("aut", "rev"), 
+    comment = c(ORCID = "0000-0002-0212-5451")))
+URL: https://github.com/JEFworks-Lab/scatterbar
+BugReports: https://github.com/JEFworks-Lab/scatterbar/issues
+Description: The scatterbar package provides a powerful and flexible tool for visualizing proportional data across spatially resolved contexts. By combining the concepts of scatter plots and stacked bar charts, scatterbar allows users to create scatterbar plots, which effectively display the proportions of different categories at each (x, y) location. This visualization is particularly useful for applications where understanding the distribution of categories across spatial coordinates is essential. 
+    The package features:
+    - Automatic determination of optimal scaling factors based on data.
+    - Customizable scaling and padding options for both x and y axes.
+    - Flexibility to specify custom colors for each category.
+    - Options to customize the plot title and legend title.
+    - Integration with ggplot2 for robust and high-quality visualizations.
+License: GPL (>= 3)
 Encoding: UTF-8
-LazyData: true
-RoxygenNote: 7.2.3
-Depends: 
-    R (>= 2.10)
-Suggests: 
-    knitr,
-    rmarkdown
-VignetteBuilder: knitr
+LazyData: FALSE
+RoxygenNote: 7.3.1
+
