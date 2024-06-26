@@ -2,31 +2,52 @@
 % Please edit documentation in R/create_scatterbar.R
 \name{create_scatterbar}
 \alias{create_scatterbar}
-\title{Create a stacked bar chart with customizable parameters}
+\title{Create a scattered stacked bar chart plot}
 \usage{
-create_scatterbar(deconProp, pos, x_scale = 1, y_scale = 1, width = 1)
+create_scatterbar(
+  proportion_data,
+  position_data,
+  x_scale = NULL,
+  y_scale = NULL,
+  padding_x = 0,
+  padding_y = 0,
+  show_legend = TRUE,
+  plot_title = NULL,
+  legend_title = "Group",
+  colors = NULL
+)
 }
 \arguments{
-\item{deconProp}{A data frame containing the proportions of different cell types.}
+\item{proportion_data}{A data frame containing the proportions of different categories for each location. Each row represents a location, and each column (except the row names) represents a category.}
 
-\item{pos}{A data frame containing the positional information for each spot.}
+\item{position_data}{A data frame containing the positional information for each location. This data frame includes the x and y coordinates for each location/spot (the respective row names).}
 
-\item{x_scale}{Scaling factor for the x-axis coordinates (default is 1).}
+\item{x_scale}{X-axis scaling factor (default is NULL). If not provided, it will be automatically calculated based on the data.}
 
-\item{y_scale}{Scaling factor for the y-axis coordinates (default is 1).}
+\item{y_scale}{Y-axis scaling factor (default is NULL). If not provided, it will be automatically calculated based on the data.}
 
-\item{width}{Width of the bars (default is 1).}
+\item{padding_x}{Padding for x-axis (default is 0).}
+
+\item{padding_y}{Padding for y-axis (default is 0).}
+
+\item{show_legend}{Boolean indicating whether to display the plot legend (default is TRUE).}
+
+\item{plot_title}{Title for plot (default is NULL).}
+
+\item{legend_title}{Custom title for the legend (default is "Group").}
+
+\item{colors}{Optional vector of colors to use for each category (default is NULL). If not provided, a default palette will be used.}
 }
 \value{
-A ggplot object representing the stacked bar chart.
+A ggplot object representing the scattered stacked bar chart plot.
 }
 \description{
-This function creates a stacked bar chart using ggplot2, where the bars are
-stacked based on the proportions of different cell types in each (x, y) spot.
+This function creates a scatterbar plot using ggplot2, where the bars are stacked based on the different proportions of groups in each 2-D location/spot. A scatterbar plot is a combination of a scatter plot and a stacked bar chart, allowing for the visualization of proportional data across spatial coordinates.
+The function allows for customized scaling factors and padding when creating the plot. If no scaling factors are specified, the function automatically determines the optimal scaling factors based on the data.
 }
 \examples{
-# Example usage:
-# Assuming deconProp and pos are defined before this call
-# create_stacked_bar_chart(deconProp, pos, x_scale = 1, y_scale = 1, width = 1)
+data(deconProp)
+data(pos)
+create_scatterbar(deconProp, pos, padding_x = 0.3, padding_y = 0.3, legend_title = "Cell Types")
 
 }
