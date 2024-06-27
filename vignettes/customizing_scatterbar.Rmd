@@ -2,7 +2,9 @@
 title: "Customizing scatterbar"
 author: "Jean Fan"
 date: "6/26/2024"
-output: html_document
+output:
+  pdf_document: default
+  html_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -32,6 +34,40 @@ print(prop)
 Examples of customization using `ggplot2`
 
 ```{r pressure}
+create_scatterbar(prop, pos)
+
+create_scatterbar(prop, pos) +
+  ggplot2::theme_bw() + ylab('y')
+
+create_scatterbar(prop, pos, 
+                  x_scale = 1, y_scale = 1) +
+  ggplot2::theme_bw() + ylab('y')
+
+create_scatterbar(prop, pos, 
+                  x_scale = 1, y_scale = 1, 
+                  padding_x = 0.1, padding_y = 0.1) +
+  ggplot2::theme_bw() + ylab('y')
+
+create_scatterbar(prop, pos, 
+                  x_scale = 1, y_scale = 1, 
+                  padding_x = 0.1, padding_y = 0.1) +
+  ggplot2::theme_bw() + ylab('y') + 
+  coord_flip()
+```
+
+What if my proportions don't add up to 1?
+
+```{r test}
+prop <- matrix(c(0.1, 0.2,  0,   0,
+                 0.1, 0,    0,   0.4,
+                 0,   0.2,  0.3, 0,
+                 0,   0,    0.3, 0.4), nrow=4)
+
+rownames(prop) <- c('a','b','c','d')
+colnames(prop) <- c('p1', 'p2', 'p3', 'p4')
+
+print(prop)
+
 create_scatterbar(prop, pos)
 
 create_scatterbar(prop, pos) +
