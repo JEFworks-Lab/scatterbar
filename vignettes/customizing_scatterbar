@@ -1,0 +1,54 @@
+---
+title: "Customizing scatterbar"
+author: "Jean Fan"
+date: "6/26/2024"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Simulate some data for demo purposes
+
+```{r simulate}
+library(scatterbar)
+
+pos <- data.frame(x = c(1,1,2,2),
+                  y = c(1,2,1,2))
+
+prop <- matrix(c(0.5, 0.5,  0,   0,
+                 0.5, 0,    0,   0.5,
+                 0,   0.5,  0.5, 0,
+                 0,   0,    0.5, 0.5), nrow=4)
+
+rownames(pos) <- rownames(prop) <- c('a','b','c','d')
+colnames(prop) <- c('p1', 'p2', 'p3', 'p4')
+
+print(pos)
+print(prop)
+```
+
+Examples of customization using `ggplot2`
+
+```{r pressure}
+create_scatterbar(prop, pos)
+
+create_scatterbar(prop, pos) +
+  ggplot2::theme_bw() + ylab('y')
+
+create_scatterbar(prop, pos, 
+                  x_scale = 1, y_scale = 1) +
+  ggplot2::theme_bw() + ylab('y')
+
+create_scatterbar(prop, pos, 
+                  x_scale = 1, y_scale = 1, 
+                  padding_x = 0.1, padding_y = 0.1) +
+  ggplot2::theme_bw() + ylab('y')
+
+create_scatterbar(prop, pos, 
+                  x_scale = 1, y_scale = 1, 
+                  padding_x = 0.1, padding_y = 0.1) +
+  ggplot2::theme_bw() + ylab('y') + 
+  coord_flip()
+```
