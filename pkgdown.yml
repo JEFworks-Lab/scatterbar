@@ -1,0 +1,11 @@
+pandoc: 3.1.11
+pkgdown: 2.0.9
+pkgdown_sha: ~
+articles:
+  customizing_scatterbar: customizing_scatterbar.html
+  getting-started-with-scatterbars: getting-started-with-scatterbars.html
+last_built: 2024-07-01T22:22Z
+urls:
+  reference: http://jef.works/scatterbar/reference
+  article: http://jef.works/scatterbar/articles
+
