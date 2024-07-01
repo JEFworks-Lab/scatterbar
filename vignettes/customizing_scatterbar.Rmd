@@ -37,22 +37,22 @@ Examples of customization using `ggplot2`
 create_scatterbar(prop, pos)
 
 create_scatterbar(prop, pos) +
-  ggplot2::theme_bw() + ylab('y')
+  ggplot2::theme_bw() + ggplot2::ylab('y')
 
 create_scatterbar(prop, pos, 
                   x_scale = 1, y_scale = 1) +
-  ggplot2::theme_bw() + ylab('y')
+  ggplot2::theme_bw() + ggplot2::ylab('y')
 
 create_scatterbar(prop, pos, 
                   x_scale = 1, y_scale = 1, 
                   padding_x = 0.1, padding_y = 0.1) +
-  ggplot2::theme_bw() + ylab('y')
+  ggplot2::theme_bw() + ggplot2::ylab('y')
 
 create_scatterbar(prop, pos, 
                   x_scale = 1, y_scale = 1, 
                   padding_x = 0.1, padding_y = 0.1) +
-  ggplot2::theme_bw() + ylab('y') + 
-  coord_flip()
+  ggplot2::theme_bw() + ggplot2::ylab('y') + 
+  ggplot2::coord_flip()
 ```
 
 What if my proportions don't add up to 1?
@@ -71,20 +71,21 @@ print(prop)
 create_scatterbar(prop, pos)
 
 create_scatterbar(prop, pos) +
-  ggplot2::theme_bw() + ylab('y')
+  ggplot2::theme_bw() + ggplot2::ylab('y')
 
 create_scatterbar(prop, pos, 
                   x_scale = 1, y_scale = 1) +
-  ggplot2::theme_bw() + ylab('y')
+  ggplot2::theme_bw() + ggplot2::ylab('y')
 
 create_scatterbar(prop, pos, 
                   x_scale = 1, y_scale = 1, 
                   padding_x = 0.1, padding_y = 0.1) +
-  ggplot2::theme_bw() + ylab('y')
+  ggplot2::theme_bw() + ggplot2::ylab('y')
 
 create_scatterbar(prop, pos, 
                   x_scale = 1, y_scale = 1, 
                   padding_x = 0.1, padding_y = 0.1) +
-  ggplot2::theme_bw() + ylab('y') + 
-  coord_flip()
+  ggplot2::theme_bw() + ggplot2::ylab('y') + 
+  ggplot2::coord_flip()
 ```
+
