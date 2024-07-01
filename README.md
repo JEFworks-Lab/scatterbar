@@ -31,7 +31,7 @@ locations.
 To install `scatterbar`from GitHub, you can use `devtools`:
 
 ``` r
-devtools::install_github('JEFworks/scatterbar')
+devtools::install_github('JEFworks-Lab/scatterbar')
 ```
 
 However, we currently recommend using `remotes`:
