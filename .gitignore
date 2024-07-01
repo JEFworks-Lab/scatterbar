@@ -2,3 +2,9 @@
 .Rproj.user
 *.Rproj
 inst/doc
+.Rhistory
+.Rdata
+.httr-oauth
+.DS_Store
+.quarto
+docs

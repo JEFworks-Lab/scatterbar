@@ -16,6 +16,7 @@ knitr::opts_chunk$set(
 # scatterbar
 
 <!-- badges: start -->
+[![R-CMD-check](https://github.com/JEFworks-Lab/scatterbar/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/JEFworks-Lab/scatterbar/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 `scatterbar` is an open-source R package that provides an innovative visualization technique for displaying proportional data across spatially resolved contexts. This is the `scatterbar` R documentation website. Questions, suggestions, or problems should be submitted as [GitHub issues](https://github.com/JEFworks-Lab/scatterbar/issues).

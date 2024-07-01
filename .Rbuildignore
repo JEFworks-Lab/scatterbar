@@ -9,3 +9,5 @@
 ^pkgdown$
 ^dev$
 ^images$
+^\.github$
+^scatterbar$

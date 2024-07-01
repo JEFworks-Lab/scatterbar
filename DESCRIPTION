@@ -14,7 +14,7 @@ Authors@R:
     person("Jean", "Fan", email = "jeanfan@jhu.edu", 
     role = c("aut", "rev"), 
     comment = c(ORCID = "0000-0002-0212-5451")))
-URL: https://github.com/JEFworks-Lab/scatterbar
+URL: https://github.com/JEFworks-Lab/scatterbar, http://jef.works/scatterbar/
 BugReports: https://github.com/JEFworks-Lab/scatterbar/issues
 Description: The scatterbar package provides a powerful and flexible tool for visualizing proportional data across spatially resolved contexts. By combining the concepts of scatter plots and stacked bar charts, scatterbar allows users to create scatterbar plots, which effectively display the proportions of different categories at each (x, y) location. This visualization is particularly useful for applications where understanding the distribution of categories across spatial coordinates is essential. This package features automatic determination of optimal scaling factors based on data, customizable scaling and padding options for both x and y axes, flexibility to specify custom colors for each category, options to customize the plot title and legend title, and integration with ggplot2 for robust and high-quality visualizations.
 License: GPL-3
@@ -26,4 +26,3 @@ Suggests:
     knitr,
     rmarkdown
 VignetteBuilder: knitr
-
