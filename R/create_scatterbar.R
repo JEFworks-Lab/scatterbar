@@ -92,7 +92,7 @@ create_scatterbar <- function(proportion_data, position_data, x_scale = NULL, y_
   y_scale <- y_scale - padding_y
 
   #Plot scatterbar, correcting the position of the bars within each (x, y) spot as they are plotted
-  p <- ggplot2::ggplot(combined_data, aes(x = x, y = y + cumulative_proportion*y_scale + proportion*y_scale/2)) +
+  p <- ggplot2::ggplot(combined_data, aes(x = x, y = y - y_scale/2 + cumulative_proportion*y_scale + proportion*y_scale/2)) +
     geom_tile(aes(fill = Group, height = proportion*y_scale), width = x_scale, lwd = 0) + ggplot2::theme(
       panel.grid = ggplot2::element_blank(),
       axis.line = ggplot2::element_blank(),
