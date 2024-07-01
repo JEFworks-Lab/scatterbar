@@ -1,10 +1,12 @@
 ---
 title: "Customizing scatterbar"
 author: "Jean Fan"
-date: "6/26/2024"
-output:
-  pdf_document: default
-  html_document: default
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Customizing scatterbar}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
 
 ```{r setup, include=FALSE}
