@@ -1,3 +1,6 @@
+# Define global variables
+utils::globalVariables(c("spot", "x", "y", "proportion", "cumulative_proportion", "Group"))
+
 #' Create a scattered stacked bar chart plot
 #'
 #' @description This function creates a scatterbar plot using ggplot2, where the bars are stacked based on the different proportions of groups in each 2-D location/spot. A scatterbar plot is a combination of a scatter plot and a stacked bar chart, allowing for the visualization of proportional data across spatial coordinates.
@@ -21,6 +24,7 @@
 #' data(pos)
 #' create_scatterbar(deconProp, pos, padding_x = 0.3, padding_y = 0.3, legend_title = "Cell Types")
 #'
+#' @import magrittr
 #' @import ggplot2
 #' @import tidyr
 #' @import dplyr
@@ -37,7 +41,7 @@ create_scatterbar <- function(proportion_data, position_data, x_scale = NULL, y_
   }
 
   #Check that position_data has exactly 2 columns: x and y
-  if( (any(!colnames(pos) %in% c("x", "y")) == TRUE) | (dim(pos)[2] != 2) ){
+  if( (any(!colnames(position_data) %in% c("x", "y")) == TRUE) | (dim(position_data)[2] != 2) ){
     stop("`position_data` must have exactly 2 columns named `x` and `y`.")
   }
 
@@ -61,29 +65,29 @@ create_scatterbar <- function(proportion_data, position_data, x_scale = NULL, y_
 
   #Calculate cumulative proportions for each (x, y) spot
   combined_data <- combined_data %>%
-    group_by(x, y) %>%
+    dplyr::group_by(x, y) %>%
     # Ensures that the heights of the bars within a spot add up to 1
     dplyr::mutate(cumulative_proportion = cumsum(proportion) - proportion)
 
   #Determine optimal scaling factors
   if (is.null(x_scale) && is.null(y_scale)) {
-  x_range <- range(combined_data$x)
-  y_range <- range(combined_data$y)
-  x_dist <- (x_range[2] - x_range[1])
-  y_dist <- (y_range[2] - y_range[1])
-  sq_num_spots <- sqrt(nrow(pos))
-  x_scale <-x_dist/sq_num_spots
-  y_scale <- y_dist/sq_num_spots
+    x_range <- range(combined_data$x)
+    y_range <- range(combined_data$y)
+    x_dist <- (x_range[2] - x_range[1])
+    y_dist <- (y_range[2] - y_range[1])
+    sq_num_spots <- sqrt(nrow(position_data))
+    x_scale <-x_dist/sq_num_spots
+    y_scale <- y_dist/sq_num_spots
 
   } else if (is.null(x_scale)){
     x_range <- range(combined_data$x)
     x_dist <- (x_range[2] - x_range[1])
-    sq_num_spots <- sqrt(nrow(pos))
+    sq_num_spots <- sqrt(nrow(position_data))
     x_scale <-x_dist/sq_num_spots
   } else if(is.null(y_scale)){
     y_range <- range(combined_data$y)
     y_dist <- (y_range[2] - y_range[1])
-    sq_num_spots <- sqrt(nrow(pos))
+    sq_num_spots <- sqrt(nrow(position_data))
     y_scale <-y_dist/sq_num_spots
   }
 
@@ -92,8 +96,8 @@ create_scatterbar <- function(proportion_data, position_data, x_scale = NULL, y_
   y_scale <- y_scale - padding_y
 
   #Plot scatterbar, correcting the position of the bars within each (x, y) spot as they are plotted
-  p <- ggplot2::ggplot(combined_data, aes(x = x, y = y - y_scale/2 + cumulative_proportion*y_scale + proportion*y_scale/2)) +
-    geom_tile(aes(fill = Group, height = proportion*y_scale), width = x_scale, lwd = 0) + ggplot2::theme(
+  p <- ggplot2::ggplot(combined_data, ggplot2::aes(x = x, y = y - y_scale/2 + cumulative_proportion*y_scale + proportion*y_scale/2)) +
+    ggplot2::geom_tile(ggplot2::aes(fill = Group, height = proportion*y_scale), width = x_scale, lwd = 0) + ggplot2::theme(
       panel.grid = ggplot2::element_blank(),
       axis.line = ggplot2::element_blank(),
       axis.text.x = ggplot2::element_blank(),
