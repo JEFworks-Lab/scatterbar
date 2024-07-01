@@ -1,8 +1,10 @@
 ---
-title: "getting-started-with-scatterbars"
+title: "Getting started with scatterbars"
+author: "Jean Fan"
+date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{getting-started-with-scatterbars}
+  %\VignetteIndexEntry{Getting started with scatterbars}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -23,13 +25,4 @@ plot(pos)
 head(deconProp)
 
 scatterbar::create_scatterbar(deconProp, pos)
-```
-
-```{r shiftorder}
-# change the order of the bar by changing the order in prop matrix
-# combine with other ggplot geoms and customizations
-library(ggplot2)
-scatterbar::create_scatterbar(deconProp[, c(2,3,4,5,6,7,8,1)], pos, x_scale = 1, y_scale = 1, padding_x = 0.1, padding_y = 0.1) + 
-  geom_point(data=pos, mapping=aes(x=x, y=y)) +
-  theme_bw() + ylab('y') 
 ```
