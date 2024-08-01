@@ -22,7 +22,7 @@ locations.
 
 <p align="center">
 
-<img src="https://github.com/JEFworks-Lab/scatterbar/blob/main/images/scatterbar_example.png" height="600"/>
+<img src="https://github.com/JEFworks-Lab/scatterbar/blob/main/images/scatterbar_example.png?raw=true" height="600"/>
 
 </p>
 
