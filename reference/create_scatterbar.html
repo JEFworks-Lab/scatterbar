@@ -48,14 +48,13 @@ The function allows for customized scaling factors and padding when creating the
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">create_scatterbar</span><span class="op">(</span></span>
-<span>  <span class="va">proportion_data</span>,</span>
-<span>  <span class="va">position_data</span>,</span>
-<span>  x_scale <span class="op">=</span> <span class="cn">NULL</span>,</span>
-<span>  y_scale <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  <span class="va">data</span>,</span>
+<span>  <span class="va">xy</span>,</span>
+<span>  size_x <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  size_y <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  padding_x <span class="op">=</span> <span class="fl">0</span>,</span>
 <span>  padding_y <span class="op">=</span> <span class="fl">0</span>,</span>
 <span>  show_legend <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>  plot_title <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  legend_title <span class="op">=</span> <span class="st">"Group"</span>,</span>
 <span>  colors <span class="op">=</span> <span class="cn">NULL</span></span>
 <span><span class="op">)</span></span></code></pre></div>
@@ -65,19 +64,19 @@ The function allows for customized scaling factors and padding when creating the
     <h2 id="arguments">Arguments<a class="anchor" aria-label="anchor" href="#arguments"></a></h2>
 
 
-<dl><dt id="arg-proportion-data">proportion_data<a class="anchor" aria-label="anchor" href="#arg-proportion-data"></a></dt>
+<dl><dt id="arg-data">data<a class="anchor" aria-label="anchor" href="#arg-data"></a></dt>
 <dd><p>A data frame containing the proportions of different categories for each location. Each row represents a location, and each column (except the row names) represents a category.</p></dd>
 
 
-<dt id="arg-position-data">position_data<a class="anchor" aria-label="anchor" href="#arg-position-data"></a></dt>
+<dt id="arg-xy">xy<a class="anchor" aria-label="anchor" href="#arg-xy"></a></dt>
 <dd><p>A data frame containing the positional information for each location. This data frame includes the x and y coordinates for each location/spot (the respective row names).</p></dd>
 
 
-<dt id="arg-x-scale">x_scale<a class="anchor" aria-label="anchor" href="#arg-x-scale"></a></dt>
+<dt id="arg-size-x">size_x<a class="anchor" aria-label="anchor" href="#arg-size-x"></a></dt>
 <dd><p>X-axis scaling factor (default is NULL). If not provided, it will be automatically calculated based on the data.</p></dd>
 
 
-<dt id="arg-y-scale">y_scale<a class="anchor" aria-label="anchor" href="#arg-y-scale"></a></dt>
+<dt id="arg-size-y">size_y<a class="anchor" aria-label="anchor" href="#arg-size-y"></a></dt>
 <dd><p>Y-axis scaling factor (default is NULL). If not provided, it will be automatically calculated based on the data.</p></dd>
 
 
@@ -91,10 +90,6 @@ The function allows for customized scaling factors and padding when creating the
 
 <dt id="arg-show-legend">show_legend<a class="anchor" aria-label="anchor" href="#arg-show-legend"></a></dt>
 <dd><p>Boolean indicating whether to display the plot legend (default is TRUE).</p></dd>
-
-
-<dt id="arg-plot-title">plot_title<a class="anchor" aria-label="anchor" href="#arg-plot-title"></a></dt>
-<dd><p>Title for plot (default is NULL).</p></dd>
 
 
 <dt id="arg-legend-title">legend_title<a class="anchor" aria-label="anchor" href="#arg-legend-title"></a></dt>
@@ -112,12 +107,9 @@ The function allows for customized scaling factors and padding when creating the
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">deconProp</span><span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>data set ‘deconProp’ not found</span>
-<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">pos</span><span class="op">)</span></span></span>
-<span class="r-wrn co"><span class="r-pr">#&gt;</span> <span class="warning">Warning: </span>data set ‘pos’ not found</span>
-<span class="r-in"><span><span class="fu">create_scatterbar</span><span class="op">(</span><span class="va">deconProp</span>, <span class="va">pos</span>, padding_x <span class="op">=</span> <span class="fl">0.3</span>, padding_y <span class="op">=</span> <span class="fl">0.3</span>, legend_title <span class="op">=</span> <span class="st">"Cell Types"</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in eval(expr, envir, enclos):</span> object 'deconProp' not found</span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">mOB</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">create_scatterbar</span><span class="op">(</span><span class="va">mOB</span><span class="op">$</span><span class="va">data</span>, <span class="va">mOB</span><span class="op">$</span><span class="va">xy</span>, padding_x <span class="op">=</span> <span class="fl">0.3</span>, padding_y <span class="op">=</span> <span class="fl">0.3</span>, legend_title <span class="op">=</span> <span class="st">"Cell Types"</span><span class="op">)</span></span></span>
+<span class="r-plt img"><img src="create_scatterbar-1.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
