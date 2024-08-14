@@ -1,5 +1,5 @@
 # Define global variables
-utils::globalVariables(c("spot", "proportion", "cumulative_proportion", "Group"))
+utils::globalVariables(c("x", "y", "spot", "proportion", "cumulative_proportion", "Group"))
 
 #' Create a scattered stacked bar chart plot
 #'
@@ -20,9 +20,10 @@ utils::globalVariables(c("spot", "proportion", "cumulative_proportion", "Group")
 #'
 #' @examples
 #' data(mOB)
-#' scatterbar(mOB$data, mOB$xy, padding_x = 0.3, padding_y = 0.3, legend_title = "Cell Types")
+#' create_scatterbar(mOB$data, mOB$xy, padding_x = 0.3, padding_y = 0.3, legend_title = "Cell Types")
 #'
-#' @import magrittr
+#' @importFrom grDevices rainbow
+#' @importFrom magrittr %>%
 #' @import ggplot2
 #' @import tidyr
 #' @import dplyr
