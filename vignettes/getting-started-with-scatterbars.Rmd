@@ -1,6 +1,6 @@
 ---
 title: "Getting started with scatterbars"
-author: "Jean Fan"
+author: "Jean Fan and Dee Velazquez"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
@@ -16,22 +16,22 @@ knitr::opts_chunk$set(
 )
 ```
 
+Below is how to use scatterbar from the provided spatial transcriptomic data from the mouse olfactory bulb tissue sample.
 ```{r setup}
 library(scatterbar)
-data("deconProp")
-data("pos")
+data("mOB")
 
-plot(pos)
-head(deconProp)
+plot(mOB$xy)
+head(mOB$data)
 
-scatterbar::create_scatterbar(deconProp, pos)
+scatterbar::create_scatterbar(mOB$data, mOB$xy)
 ```
 
+We can change the order of how each bar is laid out by changing the order of the cell-type proportion matrix of spatial transcriptomic data. We can also combine scatterbar with other ggplot geoms and customization!
+
 ```{r shiftorder}
-# change the order of the bar by changing the order in prop matrix
-# combine with other ggplot geoms and customizations
 library(ggplot2)
-scatterbar::create_scatterbar(deconProp[, c(2,3,4,5,6,7,8,1)], pos, x_scale = 1, y_scale = 1, padding_x = 0.1, padding_y = 0.1) + 
-  geom_point(data=pos, mapping=aes(x=x, y=y)) +
+scatterbar::create_scatterbar(mOB$data[, c(2,3,4,5,6,7,8,1)], mOB$xy, size_x = 1, size_y = 1, padding_x = 0.1, padding_y = 0.1) +
+  geom_point(data=mOB$xy, mapping=aes(x=x, y=y)) +
   theme_bw() + ylab('y') 
 ```
