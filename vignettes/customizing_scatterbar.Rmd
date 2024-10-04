@@ -13,7 +13,7 @@ vignette: >
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-Below, we will simulate some data for demo purposes. We will create a small dataset to demonstrate the `create_scatterbar` function.
+Below, we will simulate some data for demo purposes. We will create a small dataset to demonstrate the `scatterbar` function.
 
 ```{r simulate}
 
@@ -48,32 +48,32 @@ Here, we will create scatterbar plots using the scatterbar function and demonstr
 ```{r pressure}
 
 # Basic scatterbar plot with default settings
-create_scatterbar(prop, pos)
+scatterbar(prop, pos)
 
 # Scatterbar plot with a black-and-white theme and customized y-axis label
-create_scatterbar(prop, pos) +
+scatterbar(prop, pos) +
   ggplot2::theme_bw() + ggplot2::ylab('y')
 
 # Scatterbar plot with fixed x and y scale factors of 1 (size_x and size_y)
-create_scatterbar(prop, pos, 
+scatterbar(prop, pos, 
                   size_x = 1, size_y = 1) +
   ggplot2::theme_bw() + ggplot2::ylab('y')
 
 # Scatterbar plot with padding applied to the x and y axes, making the tiles slightly smaller
-create_scatterbar(prop, pos, 
+scatterbar(prop, pos, 
                   size_x = 1, size_y = 1, 
                   padding_x = 0.1, padding_y = 0.1) +
   ggplot2::theme_bw() + ggplot2::ylab('y')
 
 # Scatterbar plot with flipped coordinates, so that x and y axes are interchanged
-create_scatterbar(prop, pos, 
+scatterbar(prop, pos, 
                   size_x = 1, size_y = 1, 
                   padding_x = 0.1, padding_y = 0.1) +
   ggplot2::theme_bw() + ggplot2::ylab('y') + 
   ggplot2::coord_flip()
 
 # Scatterbar plot with customized legend title
-create_scatterbar(prop, pos, 
+scatterbar(prop, pos, 
                   size_x = 1, size_y = 1, 
                   padding_x = 0.1, padding_y = 0.1, legend_title= "Animals") +
   ggplot2::theme_bw() + ggplot2::ylab('y')
@@ -84,19 +84,19 @@ custom_colors <- c("#FF0000",  # Red
                    "#00FF00",  # Green
                    "#0000FF",  # Blue
                    "#A020F0")  # Purple
-create_scatterbar(prop, pos, 
+scatterbar(prop, pos, 
                   size_x = 1, size_y = 1, 
                   padding_x = 0.1, padding_y = 0.1, legend_title= "Animals", colors=custom_colors) +
   ggplot2::theme_bw() + ggplot2::ylab('y')
 
 # Scatterbar plot with title
-create_scatterbar(prop, pos, 
+scatterbar(prop, pos, 
                   size_x = 1, size_y = 1, 
                   padding_x = 0.1, padding_y = 0.1, legend_title= "Animals", colors=custom_colors) +
   ggplot2::theme_bw() + ggplot2::ylab('y') + ggplot2::labs(title="Favorite Animals Among Classrooms")
 
 # Scatterbar plot modifying the order of categories plotted 
-create_scatterbar(prop[, c("Fish", "Snakes", "Cats", "Dogs")], pos, 
+scatterbar(prop[, c("Fish", "Snakes", "Cats", "Dogs")], pos, 
                   size_x = 1, size_y = 1, 
                   padding_x = 0.1, padding_y = 0.1, legend_title= "Animals", colors=custom_colors) +
   ggplot2::theme_bw() + ggplot2::ylab('y') + ggplot2::labs(title="Favorite Animals Among Classrooms")
@@ -121,32 +121,32 @@ colnames(prop) <- c('Dogs', 'Cats', 'Fish', 'Snakes')
 print(prop)
 
 # Create a scatterbar plot with the new data
-create_scatterbar(prop, pos)
+scatterbar(prop, pos)
 
 # Customize the scatterbar plot using a black-and-white theme and customized y-axis label
-create_scatterbar(prop, pos) +
+scatterbar(prop, pos) +
   ggplot2::theme_bw() + ggplot2::ylab('y')
 
 # Create a scatterbar plot with fixed x and y scales and customized theme
-create_scatterbar(prop, pos, 
+scatterbar(prop, pos, 
                   size_x = 1, size_y = 1) +
   ggplot2::theme_bw() + ggplot2::ylab('y')
 
 # Apply padding to the scatterbar plot to make the tiles smaller
-create_scatterbar(prop, pos, 
+scatterbar(prop, pos, 
                   size_x = 1, size_y = 1, 
                   padding_x = 0.1, padding_y = 0.1) +
   ggplot2::theme_bw() + ggplot2::ylab('y')
 
 # Scatterbar plot with flipped coordinates
-create_scatterbar(prop, pos, 
+scatterbar(prop, pos, 
                   size_x = 1, size_y = 1, 
                   padding_x = 0.1, padding_y = 0.1) +
   ggplot2::theme_bw() + ggplot2::ylab('y') + 
   ggplot2::coord_flip()
 
 # Scatterbar plot with customized legend title
-create_scatterbar(prop, pos, 
+scatterbar(prop, pos, 
                   size_x = 1, size_y = 1, 
                   padding_x = 0.1, padding_y = 0.1, legend_title= "Animals") +
   ggplot2::theme_bw() + ggplot2::ylab('y')
@@ -157,19 +157,19 @@ custom_colors <- c("#FF0000",  # Red
                    "#00FF00",  # Green
                    "#0000FF",  # Blue
                    "#A020F0")  # Purple
-create_scatterbar(prop, pos, 
+scatterbar(prop, pos, 
                   size_x = 1, size_y = 1, 
                   padding_x = 0.1, padding_y = 0.1, legend_title= "Animals", colors=custom_colors) +
   ggplot2::theme_bw() + ggplot2::ylab('y')
 
 # Scatterbar plot with title
-create_scatterbar(prop, pos, 
+scatterbar(prop, pos, 
                   size_x = 1, size_y = 1, 
                   padding_x = 0.1, padding_y = 0.1, legend_title= "Animals", colors=custom_colors) +
   ggplot2::theme_bw() + ggplot2::ylab('y') + ggplot2::labs(title="Favorite Animals Among Classrooms")
 
 # Scatterbar plot modifying the order of categories plotted 
-create_scatterbar(prop[, c("Fish", "Snakes", "Cats", "Dogs")], pos, 
+scatterbar(prop[, c("Fish", "Snakes", "Cats", "Dogs")], pos, 
                   size_x = 1, size_y = 1, 
                   padding_x = 0.1, padding_y = 0.1, legend_title= "Animals", colors=custom_colors) +
   ggplot2::theme_bw() + ggplot2::ylab('y') + ggplot2::labs(title="Favorite Animals Among Classrooms")

@@ -20,7 +20,7 @@ utils::globalVariables(c("x", "y", "spot", "proportion", "cumulative_proportion"
 #'
 #' @examples
 #' data(mOB)
-#' create_scatterbar(mOB$data, mOB$xy, padding_x = 0.3, padding_y = 0.3, legend_title = "Cell Types")
+#' scatterbar(mOB$data, mOB$xy, padding_x = 0.3, padding_y = 0.3, legend_title = "Cell Types")
 #'
 #' @importFrom grDevices rainbow
 #' @importFrom magrittr %>%
@@ -29,7 +29,7 @@ utils::globalVariables(c("x", "y", "spot", "proportion", "cumulative_proportion"
 #' @import dplyr
 #'
 #' @export
-create_scatterbar <- function(data, xy, size_x = NULL, size_y = NULL, padding_x=0, padding_y=0, show_legend = TRUE, legend_title="Group", colors = NULL) {
+scatterbar <- function(data, xy, size_x = NULL, size_y = NULL, padding_x=0, padding_y=0, show_legend = TRUE, legend_title="Group", colors = NULL) {
 
   #Check that data and xy are either data.frames or matrices
   if( !is.matrix(data) & !is.data.frame(data) ){
