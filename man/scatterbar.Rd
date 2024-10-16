@@ -46,4 +46,13 @@ The function allows for customized scaling factors and padding when creating the
 data(mOB)
 scatterbar(mOB$data, mOB$xy, padding_x = 0.3, padding_y = 0.3, legend_title = "Cell Types")
 
+data(adult_mouse_brain_ffpe)
+scatterbar(
+adult_mouse_brain_ffpe$prop,
+adult_mouse_brain_ffpe$pos,
+size_x = 220,
+size_y = 220,
+legend_title = "Cell Types")
+
+
 }

@@ -10,10 +10,7 @@ vignette: >
 ---
 
 ```{r, include = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>"
-)
+knitr::opts_chunk$set(echo = TRUE)
 ```
 
 Below is how to use scatterbar from the provided spatial transcriptomic data from the mouse olfactory bulb tissue sample.
@@ -24,14 +21,21 @@ data("mOB")
 plot(mOB$xy)
 head(mOB$data)
 
-scatterbar::scatterbar(mOB$data, mOB$xy)
+start.time <- Sys.time()
+scatterbar::scatterbar(mOB$data, mOB$xy) + ggplot2::coord_fixed()
+end.time <- Sys.time()
+print(end.time - start.time)
+
 ```
 
 We can change the order of how each bar is laid out by changing the order of the cell-type proportion matrix of spatial transcriptomic data. We can also combine scatterbar with other ggplot geoms and customization!
 
 ```{r shiftorder}
 library(ggplot2)
+start.time <- Sys.time()
 scatterbar::scatterbar(mOB$data[, c(2,3,4,5,6,7,8,1)], mOB$xy, size_x = 1, size_y = 1, padding_x = 0.1, padding_y = 0.1) +
   geom_point(data=mOB$xy, mapping=aes(x=x, y=y)) +
-  theme_bw() + ylab('y') 
+  theme_bw() + ylab('y') + ggplot2::coord_fixed()
+end.time <- Sys.time()
+print(end.time - start.time)
 ```

@@ -20,4 +20,4 @@ pos_cities <- data.frame(Cities = cities,
 row.names(pos_cities) <- pos_cities$Cities
 pos_cities <- pos_cities %>% select(-Cities)
 
-scatterbar::create_scatterbar(df, pos_cities, plot_title="Pet Owners Across the World")
+scatterbar::scatterbar(df, pos_cities, plot_title="Pet Owners Across the World")

@@ -37,5 +37,5 @@ dim(prop)
 
 library(scatterbar)
 library(ggplot2)
-scatterbar::create_scatterbar(prop, data.frame(pos), colors = sample(rainbow(length(levels(ct)))), 
+scatterbar::scatterbar(prop, data.frame(pos), colors = sample(rainbow(length(levels(ct)))),
                               padding_x = 10, padding_y = 10) + coord_fixed()

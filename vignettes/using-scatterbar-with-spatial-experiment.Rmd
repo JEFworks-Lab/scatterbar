@@ -1,0 +1,114 @@
+---
+title: "Using scatterbar with a SpatialExperiment object"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Using scatterbar with a SpatialExperiment object}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+This tutorial demonstrates how to visualize cell-type proportions with scatterbar from a SpatialExperiment object. SpatialExperiment is a class from Bioconductor that stores information from spatial-omics experiments, which we can use to visualize the cell types found in certain spots. We will use SEraster to rasterize cell-type counts and calculate their proportions within pixels, when can then be utilized by scatterbar.
+
+For more information on SpatialExperiment, click [here.] (https://www.bioconductor.org/packages/release/bioc/vignettes/SpatialExperiment/inst/doc/SpatialExperiment.html)
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+First, we need to loading the necessary libraries and load in the dataset provided by SEraster. It is a preprocessed MERFISH dataset of the mouse preoptic area from a female naive animal.
+
+```{r loading}
+# Load required libraries
+library(SpatialExperiment)
+library(SEraster)
+library(scatterbar)
+library(ggplot2)
+
+# Load the MERFISH dataset from mouse POA (Preoptic Area)
+data("merfish_mousePOA")
+```
+
+We can see that this data is in the form of a SpatialExperiment.
+
+```{r check}
+# Check the class of the dataset
+class(merfish_mousePOA)
+```
+To aggregate cell-type data into spatial pixels, we use the rasterizeCellType function from SEraster. This function takes the SpatialExperiment object and generates a rasterized view of cell-type counts. We will rasterize at a resolution of 55 micrometers (µm) and use the "sum" function to aggregate the number of cells.
+
+```{r rasterize}
+# Rasterize the cell-type data at 55um resolution
+rastCt <- SEraster::rasterizeCellType(
+  merfish_mousePOA,  # SpatialExperiment object
+  col_name = "celltype",  # Column with cell-type information
+  resolution = 55,  # Set resolution to 55 micrometers
+  fun = "sum",  # Sum up the cells within each pixel
+  square = TRUE  # Use square-shaped pixels for rasterization
+)
+
+# Visualize the rasterized result (total number of cells per pixel)
+SEraster::plotRaster(rastCt, name = "Total cells")
+```
+Next, we calculate the proportions of each cell type within each pixel. We first retrieve the list of cell IDs for each pixel and the corresponding cell types. We then calculate the proportions for each cell type by dividing the number of cells of a given type by the total number of cells in each pixel.
+
+```{r prop}
+# Extract the list of cell IDs for each pixel
+cellids_perpixel <- colData(rastCt)$cellID_list
+
+# Retrieve the cell-type information
+ct <- merfish_mousePOA$celltype
+names(ct) <- colnames(merfish_mousePOA)
+ct <- as.factor(ct)  # Ensure cell types are factors
+
+# Calculate proportions for each pixel
+prop <- do.call(rbind, lapply(cellids_perpixel, function(x) {
+  table(ct[x]) / length(x)
+}))
+
+# Set rownames to match the pixel IDs in the raster object
+rownames(prop) <- rownames(colData(rastCt))
+head(prop)  # Display the first few rows of the proportions matrix
+```
+For scatterbar, we also need the x and y coordinates of the pixels from the rastCt object. These spatial coordinates correspond to the positions of each pixel in the rasterized grid.
+
+```{r pos}
+# Extract the spatial coordinates of the pixels (x, y)
+pos <- spatialCoords(rastCt)
+head(pos)  # Display the first few rows of the spatial coordinates
+```
+We only want to visualize pixels that contain more than one cell, so we filter out pixels that do not meet this criterion.
+
+```{r filter}
+# Filter for pixels that only contain more than one cell for visualization
+vi <- colData(rastCt)$num_cell > 1
+pos <- pos[vi, ]  # Filter spatial coordinates
+prop <- prop[vi, ]  # Filter proportions matrix
+
+# Check dimensions to ensure filtering was successful
+dim(pos)
+dim(prop)
+```
+Now that we have both the cell-type proportions and pixel position coordinates, we can visualize the data using scatterbar. We pass the proportions and coordinates, along with custom colors, to create a scatterbar plot. Remember that both the proportions and position data must be data frames in order to be passed into scatterbar.
+
+```{r scatterbar}
+# Generate custom colors for the cell types
+custom_colors <- sample(rainbow(length(levels(ct))))
+
+# Visualize the cell-type proportions using scatterbar
+start.time <- Sys.time()
+scatterbar::scatterbar(
+  prop,  # Proportions matrix
+  data.frame(pos),  # Spatial coordinates
+  colors = custom_colors,  # Custom colors for each cell type
+  padding_x = 10,  # Add padding to the x-axis
+  padding_y = 10, # Add padding to the y-axis
+  legend_title = "Cell Types" # Legend title
+  ) + coord_fixed()  # Maintain aspect ratio
+end.time <- Sys.time()
+print(end.time - start.time)
+
+```
+
+This plot shows the proportion of each cell type within each pixel, with bars stacked to represent the composition of cell types. The colors correspond to different cell types, as defined by the custom color vector.

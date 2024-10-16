@@ -1,0 +1,61 @@
+---
+title: "Using scatterbar with Visium data"
+author: "Jean Fan and Dee Velazquez"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Using scatterbar with Visium data}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+Below is how to use scatterbar from the provided Visium dataset of an FFPE preserved adult mouse brain partial coronal section from 10X Genomics.
+```{r setup}
+library(scatterbar)
+library(ggplot2)
+data("adult_mouse_brain_ffpe")
+
+plot(adult_mouse_brain_ffpe$pos)
+head(adult_mouse_brain_ffpe$prop)
+
+start.time <- Sys.time()
+scatterbar(
+  adult_mouse_brain_ffpe$prop,
+  adult_mouse_brain_ffpe$pos,
+  size_x = 220,
+  size_y = 220,
+  legend_title = "Cell Types"
+) + coord_fixed()
+
+end.time <- Sys.time()
+print(end.time - start.time)
+```
+
+Just like with the mOB data, we can change the order of how each bar is laid out by changing the order of the cell-type proportion matrix and combine scatterbar with other ggplot geoms and customization.
+```{r shiftorder}
+start.time <- Sys.time()
+custom_colors <- c('1'= '#5d6f99',
+    '2' = '#985a39',
+    '3' =  '#d6589a',
+    '4' = '#4d1395',
+    '5' = '#b5ef27',
+    '6' = '#77d5bc',
+    '7' = '#7830d2',
+    '8' ='#b43b59',
+    '9' = '#1c40b1',
+    '10' = "#FF5733",
+    '11' = '#FFFF00',
+    '12' = '#f4a6f1')
+scatterbar::scatterbar(adult_mouse_brain_ffpe$prop[, c(2,3,4,11,5,6,10,7,8,1,9, 12)], adult_mouse_brain_ffpe$pos, size_x = 220, size_y = 220, padding_x = 0.1, padding_y = 0.1, legend_title = 'Cell Type', colors = custom_colors) +
+  geom_point(data=adult_mouse_brain_ffpe$pos, mapping=aes(x=x, y=y), size = 0.1) +
+  theme_bw() + ylab('y') + ggplot2::coord_fixed()
+end.time <- Sys.time()
+print(end.time - start.time)
+```

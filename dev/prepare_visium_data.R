@@ -26,15 +26,15 @@ MERINGUE::plotEmbedding(pos, col=colSums(cd), cex=1)
 ## stdeconvolve
 library(STdeconvolve)
 ## remove pixels with too few genes
-counts <- STdeconvolve::cleanCounts(cd, 
-                                    min.lib.size = 1, 
+counts <- STdeconvolve::cleanCounts(cd,
+                                    min.lib.size = 1,
                                     max.lib.size = Inf,
-                                    min.reads = 2000, 
+                                    min.reads = 2000,
                                     verbose = TRUE)
 
 ## feature select for genes
-corpus <- STdeconvolve::restrictCorpus(counts, 
-                                       removeAbove=1.0, 
+corpus <- STdeconvolve::restrictCorpus(counts,
+                                       removeAbove=1.0,
                                        removeBelow = 0.05,
                                        alpha = 0.01,
                                        nTopOD = NA)
@@ -47,8 +47,8 @@ ldas <- STdeconvolve::fitLDA(t(as.matrix(corpus)), Ks = c(12))
 optLDA <- STdeconvolve::optimalModel(models = ldas, opt = 12)
 
 ## extract deconvolved cell type proportions (theta) and transcriptional profiles (beta)
-results <- STdeconvolve::getBetaTheta(optLDA, 
-                                      perc.filt = 0.05, 
+results <- STdeconvolve::getBetaTheta(optLDA,
+                                      perc.filt = 0.05,
                                       betaScale = 1000)
 deconProp <- results$theta
 deconGexp <- results$beta
@@ -58,7 +58,7 @@ deconGexp <- results$beta
 library(scatterbar)
 library(ggplot2)
 # Basic scatterbar plot with default settings
-create_scatterbar(deconProp, pos, 
+scatterbar(deconProp, pos,
                   size_x = 220, size_y = 220) + ggplot2::coord_fixed()
 
 adult_mouse_brain_ffpe <- list(pos=pos, prop=deconProp)

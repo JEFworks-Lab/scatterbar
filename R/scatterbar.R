@@ -22,6 +22,15 @@ utils::globalVariables(c("x", "y", "spot", "proportion", "cumulative_proportion"
 #' data(mOB)
 #' scatterbar(mOB$data, mOB$xy, padding_x = 0.3, padding_y = 0.3, legend_title = "Cell Types")
 #'
+#' data(adult_mouse_brain_ffpe)
+#' scatterbar(
+#' adult_mouse_brain_ffpe$prop,
+#' adult_mouse_brain_ffpe$pos,
+#' size_x = 220,
+#' size_y = 220,
+#' legend_title = "Cell Types")
+#'
+#'
 #' @importFrom grDevices rainbow
 #' @importFrom magrittr %>%
 #' @import ggplot2
