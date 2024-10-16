@@ -4,7 +4,7 @@ pkgdown_sha: ~
 articles:
   customizing_scatterbar: customizing_scatterbar.html
   getting-started-with-scatterbars: getting-started-with-scatterbars.html
-last_built: 2024-10-16T21:56Z
+last_built: 2024-10-16T22:04Z
 urls:
   reference: http://jef.works/scatterbar/reference
   article: http://jef.works/scatterbar/articles
