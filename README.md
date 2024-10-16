@@ -47,5 +47,6 @@ remotes::install_github('JEFworks-Lab/scatterbar')
 ## Citation
 
 Our preprint describing `scatterbar` is available on *bioRxiv*:
+
 [Velazquez D. et al. (2024), "scatterbar: an R package for visualizing proportional data across spatially resolved coordinates", *bioRxiv*](https://doi.org/10.1101/2024.08.14.606810)
 
