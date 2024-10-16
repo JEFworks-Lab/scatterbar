@@ -10,6 +10,12 @@
 website. Questions, suggestions, or problems should be submitted as
 [GitHub issues](https://github.com/JEFworks-Lab/scatterbar/issues).
 
+<p>
+
+<img src="https://github.com/JEFworks-Lab/scatterbar/blob/main/images/scatterbar_logo_hex.png?raw=true" align="center" height="300" style="float: center; height:300px;"/>
+
+</p>
+
 ## Overview
 
 By combining the concepts of scatter plots and stacked bar charts,
@@ -37,3 +43,9 @@ remotes::install_github('JEFworks-Lab/scatterbar')
   Scatterbar](https://jef.works/scatterbar/articles/customizing_scatterbar.html)
 - [Getting Started With
   Scatterbar](https://jef.works/scatterbar/articles/getting-started-with-scatterbars.html)
+
+## Citation
+
+Our preprint describing `scatterbar` is available on *bioRxiv*:
+[Velazquez D. et al. (2024), "scatterbar: an R package for visualizing proportional data across spatially resolved coordinates", *bioRxiv*](https://doi.org/10.1101/2024.08.14.606810)
+
