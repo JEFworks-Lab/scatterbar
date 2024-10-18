@@ -29,3 +29,4 @@ Suggests:
     SEraster,
     patchwork
 VignetteBuilder: knitr
+Remotes: JEFworks-Lab/SEraster, drighelli/SpatialExperiment
