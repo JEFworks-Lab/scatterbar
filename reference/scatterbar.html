@@ -22,6 +22,9 @@ The function allows for customized scaling factors and padding when creating the
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/customizing_scatterbar.html">Customizing scatterbar</a></li>
     <li><a class="dropdown-item" href="../articles/getting-started-with-scatterbars.html">Getting started with scatterbars</a></li>
+    <li><a class="dropdown-item" href="../articles/using-scatterbar-with-spatial-experiment.html">Using scatterbar with a SpatialExperiment object</a></li>
+    <li><a class="dropdown-item" href="../articles/using-scatterbar-with-visium.html">Using scatterbar with Visium data</a></li>
+    <li><a class="dropdown-item" href="../articles/visualizing-multiple-datasets.html">Visualizing multiple datasets with scatterbar</a></li>
   </ul></li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
@@ -110,6 +113,16 @@ The function allows for customized scaling factors and padding when creating the
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">mOB</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">scatterbar</span><span class="op">(</span><span class="va">mOB</span><span class="op">$</span><span class="va">data</span>, <span class="va">mOB</span><span class="op">$</span><span class="va">xy</span>, padding_x <span class="op">=</span> <span class="fl">0.3</span>, padding_y <span class="op">=</span> <span class="fl">0.3</span>, legend_title <span class="op">=</span> <span class="st">"Cell Types"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="scatterbar-1.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">adult_mouse_brain_ffpe</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">scatterbar</span><span class="op">(</span></span></span>
+<span class="r-in"><span><span class="va">adult_mouse_brain_ffpe</span><span class="op">$</span><span class="va">prop</span>,</span></span>
+<span class="r-in"><span><span class="va">adult_mouse_brain_ffpe</span><span class="op">$</span><span class="va">pos</span>,</span></span>
+<span class="r-in"><span>size_x <span class="op">=</span> <span class="fl">220</span>,</span></span>
+<span class="r-in"><span>size_y <span class="op">=</span> <span class="fl">220</span>,</span></span>
+<span class="r-in"><span>legend_title <span class="op">=</span> <span class="st">"Cell Types"</span><span class="op">)</span></span></span>
+<span class="r-plt img"><img src="scatterbar-2.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
