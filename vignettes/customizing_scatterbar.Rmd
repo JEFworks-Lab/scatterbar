@@ -12,6 +12,7 @@ vignette: >
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+# Customizing scatterbar
 
 Below, we will simulate some data for demo purposes. We will create a small dataset to demonstrate the `scatterbar` function.
 

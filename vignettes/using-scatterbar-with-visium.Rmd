@@ -15,8 +15,9 @@ knitr::opts_chunk$set(
   comment = "#>"
 )
 ```
+# Using scatterbar with Visium data
 
-Below is how to use scatterbar from the provided Visium dataset of an FFPE preserved adult mouse brain partial coronal section from 10X Genomics.
+Below is how to use `scatterbar` from the provided Visium dataset of an FFPE preserved adult mouse brain partial coronal section from 10X Genomics.
 ```{r setup}
 library(scatterbar)
 library(ggplot2)
@@ -38,7 +39,7 @@ end.time <- Sys.time()
 print(end.time - start.time)
 ```
 
-Just like with the mOB data, we can change the order of how each bar is laid out by changing the order of the cell-type proportion matrix and combine scatterbar with other ggplot geoms and customization.
+Just like with the mOB data, we can change the order of how each bar is laid out by changing the order of the cell-type proportion matrix and combine `scatterbar` with other ggplot geoms and customization.
 ```{r shiftorder}
 start.time <- Sys.time()
 custom_colors <- c('1'= '#5d6f99',

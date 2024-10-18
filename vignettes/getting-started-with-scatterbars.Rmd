@@ -12,6 +12,7 @@ vignette: >
 ```{r, include = FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+# Getting started with scatterbars
 
 Below is how to use scatterbar from the provided spatial transcriptomic data from the mouse olfactory bulb tissue sample.
 ```{r setup}

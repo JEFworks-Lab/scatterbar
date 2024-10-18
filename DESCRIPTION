@@ -24,5 +24,8 @@ RoxygenNote: 7.3.2
 Depends: R (>= 3.5.0)
 Suggests: 
     knitr,
-    rmarkdown
+    rmarkdown,
+    SpatialExperiment,
+    SEraster,
+    patchwork
 VignetteBuilder: knitr

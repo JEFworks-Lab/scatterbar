@@ -1,14 +1,13 @@
 ---
 title: "Using scatterbar with a SpatialExperiment object"
+author: "Jean Fan and Dee Velazquez"
+date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Using scatterbar with a SpatialExperiment object}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
-This tutorial demonstrates how to visualize cell-type proportions with scatterbar from a SpatialExperiment object. SpatialExperiment is a class from Bioconductor that stores information from spatial-omics experiments, which we can use to visualize the cell types found in certain spots. We will use SEraster to rasterize cell-type counts and calculate their proportions within pixels, when can then be utilized by scatterbar.
-
-For more information on SpatialExperiment, click [here.] (https://www.bioconductor.org/packages/release/bioc/vignettes/SpatialExperiment/inst/doc/SpatialExperiment.html)
 
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
@@ -16,8 +15,15 @@ knitr::opts_chunk$set(
   comment = "#>"
 )
 ```
+# Using `scatterbar` with a `SpatialExperiment` object
 
-First, we need to loading the necessary libraries and load in the dataset provided by SEraster. It is a preprocessed MERFISH dataset of the mouse preoptic area from a female naive animal.
+This tutorial demonstrates how to visualize cell-type proportions with `scatterbar` from a `SpatialExperiment` object. `SpatialExperiment` is a class from Bioconductor that stores information from spatial-omics experiments, which we can use to visualize the cell types found in certain spots. We will use `SEraster` to rasterize cell-type counts and calculate their proportions within pixels, when can then be utilized by `scatterbar`.
+
+For more information on `SpatialExperiment`, click [here] (https://www.bioconductor.org/packages/release/bioc/vignettes/SpatialExperiment/inst/doc/SpatialExperiment.html).
+
+## Load libraries
+
+First, we need to loading the necessary libraries and load in the dataset provided by `SEraster`. It is a preprocessed MERFISH dataset of the mouse preoptic area (POA) from a female naive animal. For more information, please refer to the original work, [Moffitt J. and Bambah-Mukku D. et al. (2018), "Molecular, spatial, and functional single-cell profiling of the hypothalamic preoptic region", *Science Advances*](https://www.science.org/doi/10.1126/science.aau5324).
 
 ```{r loading}
 # Load required libraries
@@ -30,13 +36,15 @@ library(ggplot2)
 data("merfish_mousePOA")
 ```
 
-We can see that this data is in the form of a SpatialExperiment.
+We can see that this data is in the form of a `SpatialExperiment`.
 
 ```{r check}
 # Check the class of the dataset
 class(merfish_mousePOA)
 ```
-To aggregate cell-type data into spatial pixels, we use the rasterizeCellType function from SEraster. This function takes the SpatialExperiment object and generates a rasterized view of cell-type counts. We will rasterize at a resolution of 55 micrometers (µm) and use the "sum" function to aggregate the number of cells.
+## Rasterize Cell-Type Counts 
+
+To aggregate cell-type data into spatial pixels, we use the `rasterizeCellType` function from `SEraster`. This function takes the `SpatialExperiment` object and generates a rasterized view of cell-type counts. We will rasterize at a resolution of 55 micrometers (µm) and use the "sum" function to aggregate the number of cells.
 
 ```{r rasterize}
 # Rasterize the cell-type data at 55um resolution
@@ -51,6 +59,9 @@ rastCt <- SEraster::rasterizeCellType(
 # Visualize the rasterized result (total number of cells per pixel)
 SEraster::plotRaster(rastCt, name = "Total cells")
 ```
+
+## Calculate Cell-Type Proportions
+
 Next, we calculate the proportions of each cell type within each pixel. We first retrieve the list of cell IDs for each pixel and the corresponding cell types. We then calculate the proportions for each cell type by dividing the number of cells of a given type by the total number of cells in each pixel.
 
 ```{r prop}
@@ -71,13 +82,17 @@ prop <- do.call(rbind, lapply(cellids_perpixel, function(x) {
 rownames(prop) <- rownames(colData(rastCt))
 head(prop)  # Display the first few rows of the proportions matrix
 ```
-For scatterbar, we also need the x and y coordinates of the pixels from the rastCt object. These spatial coordinates correspond to the positions of each pixel in the rasterized grid.
+## Retrieve Pixel Coordinates
+
+For `scatterbar`, we also need the x and y coordinates of the pixels from the `rastCt` object. These spatial coordinates correspond to the positions of each pixel in the rasterized grid.
 
 ```{r pos}
 # Extract the spatial coordinates of the pixels (x, y)
 pos <- spatialCoords(rastCt)
 head(pos)  # Display the first few rows of the spatial coordinates
 ```
+## Filter Pixels with More than One Cell
+
 We only want to visualize pixels that contain more than one cell, so we filter out pixels that do not meet this criterion.
 
 ```{r filter}
@@ -90,7 +105,9 @@ prop <- prop[vi, ]  # Filter proportions matrix
 dim(pos)
 dim(prop)
 ```
-Now that we have both the cell-type proportions and pixel position coordinates, we can visualize the data using scatterbar. We pass the proportions and coordinates, along with custom colors, to create a scatterbar plot. Remember that both the proportions and position data must be data frames in order to be passed into scatterbar.
+## Visualize Cell-Type Proportions Using `scatterbar`
+
+Now that we have both the cell-type proportions and pixel position coordinates, we can visualize the data using `scatterbar`. We pass the proportions and coordinates, along with custom colors, to create a `scatterbar` plot. Remember that both the proportions and position data must be data frames in order to be passed into scatterbar.
 
 ```{r scatterbar}
 # Generate custom colors for the cell types

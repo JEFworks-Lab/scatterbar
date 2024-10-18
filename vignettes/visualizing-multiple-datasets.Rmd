@@ -1,12 +1,16 @@
 ---
 title: "Visualizing multiple datasets with scatterbar"
+author: "Jean Fan and Dee Velazquez"
+date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Visualizing multiple datasets with scatterbar}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
-This tutorial demonstrates how to visualize multiple datasets together, utilizing the package 'patchwork'.
+# Visualizing multiple datasets with scatterbar
+
+This tutorial demonstrates how to visualize multiple datasets together, utilizing the package `patchwork`.
 ```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
@@ -14,17 +18,20 @@ knitr::opts_chunk$set(
 )
 ```
 
-Below we can load in our datasets provided by scatterbar and create the respective scatterbars using those datasets and save them to a variable.
+Below we can load in our datasets provided by `scatterbar` and create the respective scatterbars using those datasets and save them to a variable.
 ```{r setup}
 library(scatterbar)
 library(ggplot2)
+
+data("mOB")
+data("adult_mouse_brain_ffpe")
 
 # Basic scatterbar plot with default settings
 p1 <- scatterbar(mOB$data, mOB$xy) + coord_fixed()
 p2 <- scatterbar(adult_mouse_brain_ffpe$prop, adult_mouse_brain_ffpe$pos) + coord_fixed()
 ```
 
-We can then load in patchwork and visualize both scatterbars in one plot.
+We can then load in `patchwork` and visualize both scatterbars in one plot.
 ```{r patchwork}
 library(patchwork)
 p1 + p2
