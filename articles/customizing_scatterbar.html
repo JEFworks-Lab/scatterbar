@@ -34,6 +34,7 @@
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
 <li><a class="dropdown-item" href="../articles/customizing_scatterbar.html">Customizing scatterbar</a></li>
+    <li><a class="dropdown-item" href="../articles/flipping-scatterbar-oreintations.html">Flipping scatterbar oreintations and positions</a></li>
     <li><a class="dropdown-item" href="../articles/getting-started-with-scatterbars.html">Getting started with scatterbars</a></li>
     <li><a class="dropdown-item" href="../articles/using-scatterbar-with-spatial-experiment.html">Using scatterbar with a SpatialExperiment object</a></li>
     <li><a class="dropdown-item" href="../articles/using-scatterbar-with-visium.html">Using scatterbar with Visium data</a></li>
@@ -64,7 +65,7 @@
                         <h4 data-toc-skip class="author">Jean Fan and
 Dee Velazquez</h4>
             
-            <h4 data-toc-skip class="date">2024-10-18</h4>
+            <h4 data-toc-skip class="date">2024-11-13</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/JEFworks-Lab/scatterbar/blob/main/vignettes/customizing_scatterbar.Rmd" class="external-link"><code>vignettes/customizing_scatterbar.Rmd</code></a></small>
       <div class="d-none name"><code>customizing_scatterbar.Rmd</code></div>
@@ -117,41 +118,65 @@ and demonstrate various customization options using ggplot2.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Basic scatterbar plot with default settings</span></span>
 <span><span class="fu"><a href="../reference/scatterbar.html">scatterbar</a></span><span class="op">(</span><span class="va">prop</span>, <span class="va">pos</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## Calculated size_x: 0.5</span></span></code></pre>
+<pre><code><span><span class="co">## Calculated size_y: 0.5</span></span></code></pre>
+<pre><code><span><span class="co">## Applied padding_x: 0</span></span></code></pre>
+<pre><code><span><span class="co">## Applied padding_y: 0</span></span></code></pre>
 <p><img src="customizing_scatterbar_files/figure-html/pressure-1.png" width="700"></p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Scatterbar plot with a black-and-white theme and customized y-axis label</span></span>
 <span><span class="fu"><a href="../reference/scatterbar.html">scatterbar</a></span><span class="op">(</span><span class="va">prop</span>, <span class="va">pos</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_bw</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ylab</a></span><span class="op">(</span><span class="st">'y'</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## Calculated size_x: 0.5</span></span></code></pre>
+<pre><code><span><span class="co">## Calculated size_y: 0.5</span></span></code></pre>
+<pre><code><span><span class="co">## Applied padding_x: 0</span></span></code></pre>
+<pre><code><span><span class="co">## Applied padding_y: 0</span></span></code></pre>
 <p><img src="customizing_scatterbar_files/figure-html/pressure-2.png" width="700"></p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Scatterbar plot with fixed x and y scale factors of 1 (size_x and size_y)</span></span>
 <span><span class="fu"><a href="../reference/scatterbar.html">scatterbar</a></span><span class="op">(</span><span class="va">prop</span>, <span class="va">pos</span>, </span>
 <span>                  size_x <span class="op">=</span> <span class="fl">1</span>, size_y <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_bw</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ylab</a></span><span class="op">(</span><span class="st">'y'</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## Calculated size_x: 1</span></span></code></pre>
+<pre><code><span><span class="co">## Calculated size_y: 1</span></span></code></pre>
+<pre><code><span><span class="co">## Applied padding_x: 0</span></span></code></pre>
+<pre><code><span><span class="co">## Applied padding_y: 0</span></span></code></pre>
 <p><img src="customizing_scatterbar_files/figure-html/pressure-3.png" width="700"></p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Scatterbar plot with padding applied to the x and y axes, making the tiles slightly smaller</span></span>
 <span><span class="fu"><a href="../reference/scatterbar.html">scatterbar</a></span><span class="op">(</span><span class="va">prop</span>, <span class="va">pos</span>, </span>
 <span>                  size_x <span class="op">=</span> <span class="fl">1</span>, size_y <span class="op">=</span> <span class="fl">1</span>, </span>
 <span>                  padding_x <span class="op">=</span> <span class="fl">0.1</span>, padding_y <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_bw</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ylab</a></span><span class="op">(</span><span class="st">'y'</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## Calculated size_x: 0.9</span></span></code></pre>
+<pre><code><span><span class="co">## Calculated size_y: 0.9</span></span></code></pre>
+<pre><code><span><span class="co">## Applied padding_x: 0.1</span></span></code></pre>
+<pre><code><span><span class="co">## Applied padding_y: 0.1</span></span></code></pre>
 <p><img src="customizing_scatterbar_files/figure-html/pressure-4.png" width="700"></p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Scatterbar plot with flipped coordinates, so that x and y axes are interchanged</span></span>
 <span><span class="fu"><a href="../reference/scatterbar.html">scatterbar</a></span><span class="op">(</span><span class="va">prop</span>, <span class="va">pos</span>, </span>
 <span>                  size_x <span class="op">=</span> <span class="fl">1</span>, size_y <span class="op">=</span> <span class="fl">1</span>, </span>
 <span>                  padding_x <span class="op">=</span> <span class="fl">0.1</span>, padding_y <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_bw</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ylab</a></span><span class="op">(</span><span class="st">'y'</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_flip.html" class="external-link">coord_flip</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## Calculated size_x: 0.9</span></span></code></pre>
+<pre><code><span><span class="co">## Calculated size_y: 0.9</span></span></code></pre>
+<pre><code><span><span class="co">## Applied padding_x: 0.1</span></span></code></pre>
+<pre><code><span><span class="co">## Applied padding_y: 0.1</span></span></code></pre>
 <p><img src="customizing_scatterbar_files/figure-html/pressure-5.png" width="700"></p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Scatterbar plot with customized legend title</span></span>
 <span><span class="fu"><a href="../reference/scatterbar.html">scatterbar</a></span><span class="op">(</span><span class="va">prop</span>, <span class="va">pos</span>, </span>
 <span>                  size_x <span class="op">=</span> <span class="fl">1</span>, size_y <span class="op">=</span> <span class="fl">1</span>, </span>
 <span>                  padding_x <span class="op">=</span> <span class="fl">0.1</span>, padding_y <span class="op">=</span> <span class="fl">0.1</span>, legend_title<span class="op">=</span> <span class="st">"Animals"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_bw</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ylab</a></span><span class="op">(</span><span class="st">'y'</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## Calculated size_x: 0.9</span></span></code></pre>
+<pre><code><span><span class="co">## Calculated size_y: 0.9</span></span></code></pre>
+<pre><code><span><span class="co">## Applied padding_x: 0.1</span></span></code></pre>
+<pre><code><span><span class="co">## Applied padding_y: 0.1</span></span></code></pre>
 <p><img src="customizing_scatterbar_files/figure-html/pressure-6.png" width="700"></p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Scatterbar plot using the custom colors</span></span>
 <span><span class="co"># Define a custom set of colors for the categories</span></span>
 <span><span class="va">custom_colors</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"#FF0000"</span>,  <span class="co"># Red</span></span>
@@ -162,23 +187,35 @@ and demonstrate various customization options using ggplot2.</p>
 <span>                  size_x <span class="op">=</span> <span class="fl">1</span>, size_y <span class="op">=</span> <span class="fl">1</span>, </span>
 <span>                  padding_x <span class="op">=</span> <span class="fl">0.1</span>, padding_y <span class="op">=</span> <span class="fl">0.1</span>, legend_title<span class="op">=</span> <span class="st">"Animals"</span>, colors<span class="op">=</span><span class="va">custom_colors</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_bw</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ylab</a></span><span class="op">(</span><span class="st">'y'</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## Calculated size_x: 0.9</span></span></code></pre>
+<pre><code><span><span class="co">## Calculated size_y: 0.9</span></span></code></pre>
+<pre><code><span><span class="co">## Applied padding_x: 0.1</span></span></code></pre>
+<pre><code><span><span class="co">## Applied padding_y: 0.1</span></span></code></pre>
 <p><img src="customizing_scatterbar_files/figure-html/pressure-7.png" width="700"></p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Scatterbar plot with title</span></span>
 <span><span class="fu"><a href="../reference/scatterbar.html">scatterbar</a></span><span class="op">(</span><span class="va">prop</span>, <span class="va">pos</span>, </span>
 <span>                  size_x <span class="op">=</span> <span class="fl">1</span>, size_y <span class="op">=</span> <span class="fl">1</span>, </span>
 <span>                  padding_x <span class="op">=</span> <span class="fl">0.1</span>, padding_y <span class="op">=</span> <span class="fl">0.1</span>, legend_title<span class="op">=</span> <span class="st">"Animals"</span>, colors<span class="op">=</span><span class="va">custom_colors</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_bw</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ylab</a></span><span class="op">(</span><span class="st">'y'</span><span class="op">)</span> <span class="op">+</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title<span class="op">=</span><span class="st">"Favorite Animals Among Classrooms"</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## Calculated size_x: 0.9</span></span></code></pre>
+<pre><code><span><span class="co">## Calculated size_y: 0.9</span></span></code></pre>
+<pre><code><span><span class="co">## Applied padding_x: 0.1</span></span></code></pre>
+<pre><code><span><span class="co">## Applied padding_y: 0.1</span></span></code></pre>
 <p><img src="customizing_scatterbar_files/figure-html/pressure-8.png" width="700"></p>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Scatterbar plot modifying the order of categories plotted </span></span>
 <span><span class="fu"><a href="../reference/scatterbar.html">scatterbar</a></span><span class="op">(</span><span class="va">prop</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Fish"</span>, <span class="st">"Snakes"</span>, <span class="st">"Cats"</span>, <span class="st">"Dogs"</span><span class="op">)</span><span class="op">]</span>, <span class="va">pos</span>, </span>
 <span>                  size_x <span class="op">=</span> <span class="fl">1</span>, size_y <span class="op">=</span> <span class="fl">1</span>, </span>
 <span>                  padding_x <span class="op">=</span> <span class="fl">0.1</span>, padding_y <span class="op">=</span> <span class="fl">0.1</span>, legend_title<span class="op">=</span> <span class="st">"Animals"</span>, colors<span class="op">=</span><span class="va">custom_colors</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_bw</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ylab</a></span><span class="op">(</span><span class="st">'y'</span><span class="op">)</span> <span class="op">+</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title<span class="op">=</span><span class="st">"Favorite Animals Among Classrooms"</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## Calculated size_x: 0.9</span></span></code></pre>
+<pre><code><span><span class="co">## Calculated size_y: 0.9</span></span></code></pre>
+<pre><code><span><span class="co">## Applied padding_x: 0.1</span></span></code></pre>
+<pre><code><span><span class="co">## Applied padding_y: 0.1</span></span></code></pre>
 <p><img src="customizing_scatterbar_files/figure-html/pressure-9.png" width="700"></p>
 <p>What if my proportions don’t add up to 1?</p>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Define a new proportional data matrix where proportions do not sum to 1</span></span>
 <span><span class="va">prop</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.1</span>, <span class="fl">0.2</span>,  <span class="fl">0</span>,   <span class="fl">0</span>,</span>
 <span>                 <span class="fl">0.1</span>, <span class="fl">0</span>,    <span class="fl">0</span>,   <span class="fl">0.4</span>,</span>
@@ -198,44 +235,68 @@ and demonstrate various customization options using ggplot2.</p>
 <span><span class="co">## b  0.2  0.0  0.2    0.0</span></span>
 <span><span class="co">## c  0.0  0.0  0.3    0.3</span></span>
 <span><span class="co">## d  0.0  0.4  0.0    0.4</span></span></code></pre>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Create a scatterbar plot with the new data</span></span>
 <span><span class="fu"><a href="../reference/scatterbar.html">scatterbar</a></span><span class="op">(</span><span class="va">prop</span>, <span class="va">pos</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## Calculated size_x: 0.5</span></span></code></pre>
+<pre><code><span><span class="co">## Calculated size_y: 0.5</span></span></code></pre>
+<pre><code><span><span class="co">## Applied padding_x: 0</span></span></code></pre>
+<pre><code><span><span class="co">## Applied padding_y: 0</span></span></code></pre>
 <p><img src="customizing_scatterbar_files/figure-html/test-1.png" width="700"></p>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb57"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Customize the scatterbar plot using a black-and-white theme and customized y-axis label</span></span>
 <span><span class="fu"><a href="../reference/scatterbar.html">scatterbar</a></span><span class="op">(</span><span class="va">prop</span>, <span class="va">pos</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_bw</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ylab</a></span><span class="op">(</span><span class="st">'y'</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## Calculated size_x: 0.5</span></span></code></pre>
+<pre><code><span><span class="co">## Calculated size_y: 0.5</span></span></code></pre>
+<pre><code><span><span class="co">## Applied padding_x: 0</span></span></code></pre>
+<pre><code><span><span class="co">## Applied padding_y: 0</span></span></code></pre>
 <p><img src="customizing_scatterbar_files/figure-html/test-2.png" width="700"></p>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb62"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Create a scatterbar plot with fixed x and y scales and customized theme</span></span>
 <span><span class="fu"><a href="../reference/scatterbar.html">scatterbar</a></span><span class="op">(</span><span class="va">prop</span>, <span class="va">pos</span>, </span>
 <span>                  size_x <span class="op">=</span> <span class="fl">1</span>, size_y <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_bw</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ylab</a></span><span class="op">(</span><span class="st">'y'</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## Calculated size_x: 1</span></span></code></pre>
+<pre><code><span><span class="co">## Calculated size_y: 1</span></span></code></pre>
+<pre><code><span><span class="co">## Applied padding_x: 0</span></span></code></pre>
+<pre><code><span><span class="co">## Applied padding_y: 0</span></span></code></pre>
 <p><img src="customizing_scatterbar_files/figure-html/test-3.png" width="700"></p>
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Apply padding to the scatterbar plot to make the tiles smaller</span></span>
 <span><span class="fu"><a href="../reference/scatterbar.html">scatterbar</a></span><span class="op">(</span><span class="va">prop</span>, <span class="va">pos</span>, </span>
 <span>                  size_x <span class="op">=</span> <span class="fl">1</span>, size_y <span class="op">=</span> <span class="fl">1</span>, </span>
 <span>                  padding_x <span class="op">=</span> <span class="fl">0.1</span>, padding_y <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_bw</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ylab</a></span><span class="op">(</span><span class="st">'y'</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## Calculated size_x: 0.9</span></span></code></pre>
+<pre><code><span><span class="co">## Calculated size_y: 0.9</span></span></code></pre>
+<pre><code><span><span class="co">## Applied padding_x: 0.1</span></span></code></pre>
+<pre><code><span><span class="co">## Applied padding_y: 0.1</span></span></code></pre>
 <p><img src="customizing_scatterbar_files/figure-html/test-4.png" width="700"></p>
-<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Scatterbar plot with flipped coordinates</span></span>
 <span><span class="fu"><a href="../reference/scatterbar.html">scatterbar</a></span><span class="op">(</span><span class="va">prop</span>, <span class="va">pos</span>, </span>
 <span>                  size_x <span class="op">=</span> <span class="fl">1</span>, size_y <span class="op">=</span> <span class="fl">1</span>, </span>
 <span>                  padding_x <span class="op">=</span> <span class="fl">0.1</span>, padding_y <span class="op">=</span> <span class="fl">0.1</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_bw</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ylab</a></span><span class="op">(</span><span class="st">'y'</span><span class="op">)</span> <span class="op">+</span> </span>
 <span>  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_flip.html" class="external-link">coord_flip</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## Calculated size_x: 0.9</span></span></code></pre>
+<pre><code><span><span class="co">## Calculated size_y: 0.9</span></span></code></pre>
+<pre><code><span><span class="co">## Applied padding_x: 0.1</span></span></code></pre>
+<pre><code><span><span class="co">## Applied padding_y: 0.1</span></span></code></pre>
 <p><img src="customizing_scatterbar_files/figure-html/test-5.png" width="700"></p>
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb77"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Scatterbar plot with customized legend title</span></span>
 <span><span class="fu"><a href="../reference/scatterbar.html">scatterbar</a></span><span class="op">(</span><span class="va">prop</span>, <span class="va">pos</span>, </span>
 <span>                  size_x <span class="op">=</span> <span class="fl">1</span>, size_y <span class="op">=</span> <span class="fl">1</span>, </span>
 <span>                  padding_x <span class="op">=</span> <span class="fl">0.1</span>, padding_y <span class="op">=</span> <span class="fl">0.1</span>, legend_title<span class="op">=</span> <span class="st">"Animals"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_bw</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ylab</a></span><span class="op">(</span><span class="st">'y'</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## Calculated size_x: 0.9</span></span></code></pre>
+<pre><code><span><span class="co">## Calculated size_y: 0.9</span></span></code></pre>
+<pre><code><span><span class="co">## Applied padding_x: 0.1</span></span></code></pre>
+<pre><code><span><span class="co">## Applied padding_y: 0.1</span></span></code></pre>
 <p><img src="customizing_scatterbar_files/figure-html/test-6.png" width="700"></p>
-<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb82"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Scatterbar plot using the custom colors</span></span>
 <span><span class="co"># Define a custom set of colors for the categories</span></span>
 <span><span class="va">custom_colors</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"#FF0000"</span>,  <span class="co"># Red</span></span>
@@ -246,20 +307,32 @@ and demonstrate various customization options using ggplot2.</p>
 <span>                  size_x <span class="op">=</span> <span class="fl">1</span>, size_y <span class="op">=</span> <span class="fl">1</span>, </span>
 <span>                  padding_x <span class="op">=</span> <span class="fl">0.1</span>, padding_y <span class="op">=</span> <span class="fl">0.1</span>, legend_title<span class="op">=</span> <span class="st">"Animals"</span>, colors<span class="op">=</span><span class="va">custom_colors</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_bw</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ylab</a></span><span class="op">(</span><span class="st">'y'</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## Calculated size_x: 0.9</span></span></code></pre>
+<pre><code><span><span class="co">## Calculated size_y: 0.9</span></span></code></pre>
+<pre><code><span><span class="co">## Applied padding_x: 0.1</span></span></code></pre>
+<pre><code><span><span class="co">## Applied padding_y: 0.1</span></span></code></pre>
 <p><img src="customizing_scatterbar_files/figure-html/test-7.png" width="700"></p>
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb87"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Scatterbar plot with title</span></span>
 <span><span class="fu"><a href="../reference/scatterbar.html">scatterbar</a></span><span class="op">(</span><span class="va">prop</span>, <span class="va">pos</span>, </span>
 <span>                  size_x <span class="op">=</span> <span class="fl">1</span>, size_y <span class="op">=</span> <span class="fl">1</span>, </span>
 <span>                  padding_x <span class="op">=</span> <span class="fl">0.1</span>, padding_y <span class="op">=</span> <span class="fl">0.1</span>, legend_title<span class="op">=</span> <span class="st">"Animals"</span>, colors<span class="op">=</span><span class="va">custom_colors</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_bw</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ylab</a></span><span class="op">(</span><span class="st">'y'</span><span class="op">)</span> <span class="op">+</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title<span class="op">=</span><span class="st">"Favorite Animals Among Classrooms"</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## Calculated size_x: 0.9</span></span></code></pre>
+<pre><code><span><span class="co">## Calculated size_y: 0.9</span></span></code></pre>
+<pre><code><span><span class="co">## Applied padding_x: 0.1</span></span></code></pre>
+<pre><code><span><span class="co">## Applied padding_y: 0.1</span></span></code></pre>
 <p><img src="customizing_scatterbar_files/figure-html/test-8.png" width="700"></p>
-<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb92"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Scatterbar plot modifying the order of categories plotted </span></span>
 <span><span class="fu"><a href="../reference/scatterbar.html">scatterbar</a></span><span class="op">(</span><span class="va">prop</span><span class="op">[</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Fish"</span>, <span class="st">"Snakes"</span>, <span class="st">"Cats"</span>, <span class="st">"Dogs"</span><span class="op">)</span><span class="op">]</span>, <span class="va">pos</span>, </span>
 <span>                  size_x <span class="op">=</span> <span class="fl">1</span>, size_y <span class="op">=</span> <span class="fl">1</span>, </span>
 <span>                  padding_x <span class="op">=</span> <span class="fl">0.1</span>, padding_y <span class="op">=</span> <span class="fl">0.1</span>, legend_title<span class="op">=</span> <span class="st">"Animals"</span>, colors<span class="op">=</span><span class="va">custom_colors</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_bw</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ylab</a></span><span class="op">(</span><span class="st">'y'</span><span class="op">)</span> <span class="op">+</span> <span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>title<span class="op">=</span><span class="st">"Favorite Animals Among Classrooms"</span><span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">## Calculated size_x: 0.9</span></span></code></pre>
+<pre><code><span><span class="co">## Calculated size_y: 0.9</span></span></code></pre>
+<pre><code><span><span class="co">## Applied padding_x: 0.1</span></span></code></pre>
+<pre><code><span><span class="co">## Applied padding_y: 0.1</span></span></code></pre>
 <p><img src="customizing_scatterbar_files/figure-html/test-9.png" width="700"></p>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

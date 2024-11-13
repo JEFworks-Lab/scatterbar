@@ -21,6 +21,7 @@ The function allows for customized scaling factors and padding when creating the
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/customizing_scatterbar.html">Customizing scatterbar</a></li>
+    <li><a class="dropdown-item" href="../articles/flipping-scatterbar-oreintations.html">Flipping scatterbar oreintations and positions</a></li>
     <li><a class="dropdown-item" href="../articles/getting-started-with-scatterbars.html">Getting started with scatterbars</a></li>
     <li><a class="dropdown-item" href="../articles/using-scatterbar-with-spatial-experiment.html">Using scatterbar with a SpatialExperiment object</a></li>
     <li><a class="dropdown-item" href="../articles/using-scatterbar-with-visium.html">Using scatterbar with Visium data</a></li>
@@ -59,7 +60,8 @@ The function allows for customized scaling factors and padding when creating the
 <span>  padding_y <span class="op">=</span> <span class="fl">0</span>,</span>
 <span>  show_legend <span class="op">=</span> <span class="cn">TRUE</span>,</span>
 <span>  legend_title <span class="op">=</span> <span class="st">"Group"</span>,</span>
-<span>  colors <span class="op">=</span> <span class="cn">NULL</span></span>
+<span>  colors <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  verbose <span class="op">=</span> <span class="cn">TRUE</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -102,6 +104,10 @@ The function allows for customized scaling factors and padding when creating the
 <dt id="arg-colors">colors<a class="anchor" aria-label="anchor" href="#arg-colors"></a></dt>
 <dd><p>Optional vector of colors to use for each category (default is NULL). If not provided, a default palette will be used.</p></dd>
 
+
+<dt id="arg-verbose">verbose<a class="anchor" aria-label="anchor" href="#arg-verbose"></a></dt>
+<dd><p>Boolean indicating whether to print the calculated scaling and padding values (default is TRUE).</p></dd>
+
 </dl></div>
     <div class="section level2">
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
@@ -112,6 +118,10 @@ The function allows for customized scaling factors and padding when creating the
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">mOB</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">scatterbar</span><span class="op">(</span><span class="va">mOB</span><span class="op">$</span><span class="va">data</span>, <span class="va">mOB</span><span class="op">$</span><span class="va">xy</span>, padding_x <span class="op">=</span> <span class="fl">0.3</span>, padding_y <span class="op">=</span> <span class="fl">0.3</span>, legend_title <span class="op">=</span> <span class="st">"Cell Types"</span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Calculated size_x: 0.940347345892085</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Calculated size_y: 0.630260509419063</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Applied padding_x: 0.3</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Applied padding_y: 0.3</span>
 <span class="r-plt img"><img src="scatterbar-1.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="va">adult_mouse_brain_ffpe</span><span class="op">)</span></span></span>
@@ -121,6 +131,10 @@ The function allows for customized scaling factors and padding when creating the
 <span class="r-in"><span>size_x <span class="op">=</span> <span class="fl">220</span>,</span></span>
 <span class="r-in"><span>size_y <span class="op">=</span> <span class="fl">220</span>,</span></span>
 <span class="r-in"><span>legend_title <span class="op">=</span> <span class="st">"Cell Types"</span><span class="op">)</span></span></span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Calculated size_x: 220</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Calculated size_y: 220</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Applied padding_x: 0</span>
+<span class="r-msg co"><span class="r-pr">#&gt;</span> Applied padding_y: 0</span>
 <span class="r-plt img"><img src="scatterbar-2.png" alt="" width="700" height="433"></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>

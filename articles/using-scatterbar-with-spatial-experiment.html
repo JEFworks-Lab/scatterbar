@@ -34,6 +34,7 @@
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
 <li><a class="dropdown-item" href="../articles/customizing_scatterbar.html">Customizing scatterbar</a></li>
+    <li><a class="dropdown-item" href="../articles/flipping-scatterbar-oreintations.html">Flipping scatterbar oreintations and positions</a></li>
     <li><a class="dropdown-item" href="../articles/getting-started-with-scatterbars.html">Getting started with scatterbars</a></li>
     <li><a class="dropdown-item" href="../articles/using-scatterbar-with-spatial-experiment.html">Using scatterbar with a SpatialExperiment object</a></li>
     <li><a class="dropdown-item" href="../articles/using-scatterbar-with-visium.html">Using scatterbar with Visium data</a></li>
@@ -64,7 +65,7 @@
                         <h4 data-toc-skip class="author">Jean Fan and
 Dee Velazquez</h4>
             
-            <h4 data-toc-skip class="date">2024-10-18</h4>
+            <h4 data-toc-skip class="date">2024-11-13</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/JEFworks-Lab/scatterbar/blob/main/vignettes/using-scatterbar-with-spatial-experiment.Rmd" class="external-link"><code>vignettes/using-scatterbar-with-spatial-experiment.Rmd</code></a></small>
       <div class="d-none name"><code>using-scatterbar-with-spatial-experiment.Rmd</code></div>
@@ -136,8 +137,8 @@ Advances</em></a>.</p>
 <span><span class="co">#&gt;     colnames, dirname, do.call, duplicated, eval, evalq, Filter, Find,</span></span>
 <span><span class="co">#&gt;     get, grep, grepl, intersect, is.unsorted, lapply, Map, mapply,</span></span>
 <span><span class="co">#&gt;     match, mget, order, paste, pmax, pmax.int, pmin, pmin.int,</span></span>
-<span><span class="co">#&gt;     Position, rank, rbind, Reduce, rownames, sapply, setdiff, table,</span></span>
-<span><span class="co">#&gt;     tapply, union, unique, unsplit, which.max, which.min</span></span>
+<span><span class="co">#&gt;     Position, rank, rbind, Reduce, rownames, sapply, saveRDS, setdiff,</span></span>
+<span><span class="co">#&gt;     table, tapply, union, unique, unsplit, which.max, which.min</span></span>
 <span><span class="co">#&gt; Loading required package: S4Vectors</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Attaching package: 'S4Vectors'</span></span>
@@ -306,12 +307,16 @@ into scatterbar.</p>
 <span>  padding_x <span class="op">=</span> <span class="fl">10</span>,  <span class="co"># Add padding to the x-axis</span></span>
 <span>  padding_y <span class="op">=</span> <span class="fl">10</span>, <span class="co"># Add padding to the y-axis</span></span>
 <span>  legend_title <span class="op">=</span> <span class="st">"Cell Types"</span> <span class="co"># Legend title</span></span>
-<span>  <span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_fixed.html" class="external-link">coord_fixed</a></span><span class="op">(</span><span class="op">)</span>  <span class="co"># Maintain aspect ratio</span></span></code></pre></div>
+<span>  <span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_fixed.html" class="external-link">coord_fixed</a></span><span class="op">(</span><span class="op">)</span>  <span class="co"># Maintain aspect ratio</span></span>
+<span><span class="co">#&gt; Calculated size_x: 44.7069487500984</span></span>
+<span><span class="co">#&gt; Calculated size_y: 44.7069487500984</span></span>
+<span><span class="co">#&gt; Applied padding_x: 10</span></span>
+<span><span class="co">#&gt; Applied padding_y: 10</span></span></code></pre></div>
 <p><img src="using-scatterbar-with-spatial-experiment_files/figure-html/scatterbar-1.png" width="700"></p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">end.time</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.time</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">end.time</span> <span class="op">-</span> <span class="va">start.time</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Time difference of 0.349581 secs</span></span></code></pre></div>
+<span><span class="co">#&gt; Time difference of 0.3320761 secs</span></span></code></pre></div>
 <p>This plot shows the proportion of each cell type within each pixel,
 with bars stacked to represent the composition of cell types. The colors
 correspond to different cell types, as defined by the custom color

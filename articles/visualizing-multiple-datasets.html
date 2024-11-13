@@ -34,6 +34,7 @@
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
 <li><a class="dropdown-item" href="../articles/customizing_scatterbar.html">Customizing scatterbar</a></li>
+    <li><a class="dropdown-item" href="../articles/flipping-scatterbar-oreintations.html">Flipping scatterbar oreintations and positions</a></li>
     <li><a class="dropdown-item" href="../articles/getting-started-with-scatterbars.html">Getting started with scatterbars</a></li>
     <li><a class="dropdown-item" href="../articles/using-scatterbar-with-spatial-experiment.html">Using scatterbar with a SpatialExperiment object</a></li>
     <li><a class="dropdown-item" href="../articles/using-scatterbar-with-visium.html">Using scatterbar with Visium data</a></li>
@@ -64,7 +65,7 @@
                         <h4 data-toc-skip class="author">Jean Fan and
 Dee Velazquez</h4>
             
-            <h4 data-toc-skip class="date">2024-10-18</h4>
+            <h4 data-toc-skip class="date">2024-11-13</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/JEFworks-Lab/scatterbar/blob/main/vignettes/visualizing-multiple-datasets.Rmd" class="external-link"><code>vignettes/visualizing-multiple-datasets.Rmd</code></a></small>
       <div class="d-none name"><code>visualizing-multiple-datasets.Rmd</code></div>
@@ -89,7 +90,15 @@ to a variable.</p>
 <span></span>
 <span><span class="co"># Basic scatterbar plot with default settings</span></span>
 <span><span class="va">p1</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/scatterbar.html">scatterbar</a></span><span class="op">(</span><span class="va">mOB</span><span class="op">$</span><span class="va">data</span>, <span class="va">mOB</span><span class="op">$</span><span class="va">xy</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_fixed.html" class="external-link">coord_fixed</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="va">p2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/scatterbar.html">scatterbar</a></span><span class="op">(</span><span class="va">adult_mouse_brain_ffpe</span><span class="op">$</span><span class="va">prop</span>, <span class="va">adult_mouse_brain_ffpe</span><span class="op">$</span><span class="va">pos</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_fixed.html" class="external-link">coord_fixed</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<span><span class="co">#&gt; Calculated size_x: 1.24034734589208</span></span>
+<span><span class="co">#&gt; Calculated size_y: 0.930260509419063</span></span>
+<span><span class="co">#&gt; Applied padding_x: 0</span></span>
+<span><span class="co">#&gt; Applied padding_y: 0</span></span>
+<span><span class="va">p2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/scatterbar.html">scatterbar</a></span><span class="op">(</span><span class="va">adult_mouse_brain_ffpe</span><span class="op">$</span><span class="va">prop</span>, <span class="va">adult_mouse_brain_ffpe</span><span class="op">$</span><span class="va">pos</span><span class="op">)</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_fixed.html" class="external-link">coord_fixed</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Calculated size_x: 302.260275014085</span></span>
+<span><span class="co">#&gt; Calculated size_y: 323.465991707814</span></span>
+<span><span class="co">#&gt; Applied padding_x: 0</span></span>
+<span><span class="co">#&gt; Applied padding_y: 0</span></span></code></pre></div>
 <p>We can then load in <code>patchwork</code> and visualize both
 scatterbars in one plot.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
