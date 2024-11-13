@@ -46,6 +46,7 @@ remotes::install_github('JEFworks-Lab/scatterbar')
 - [Using Scatterbar With `SpatialExperiment`](https://jef.works/scatterbar/articles/using-scatterbar-with-spatial-experiment.html)
 - [Using Scatterbar With Visium Files](https://jef.works/scatterbar/articles/using-scatterbar-with-visium.html)
 - [Visualizing Multiple Datasets](https://jef.works/scatterbar/articles/visualizing-multiple-datasets.html)
+- [Flipping Scatterbar Oreintations](https://jef.works/scatterbar/articles/flipping-scatterbar-oreintations.html)
 
 ## Citation
 

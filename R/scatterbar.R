@@ -15,6 +15,7 @@ utils::globalVariables(c("x", "y", "spot", "proportion", "cumulative_proportion"
 #' @param show_legend Boolean indicating whether to display the plot legend (default is TRUE).
 #' @param legend_title Custom title for the legend (default is "Group").
 #' @param colors Optional vector of colors to use for each category (default is NULL). If not provided, a default palette will be used.
+#' @param verbose Boolean indicating whether to print the calculated scaling and padding values (default is TRUE).
 #'
 #' @return A ggplot object representing the scattered stacked bar chart plot.
 #'
@@ -38,7 +39,7 @@ utils::globalVariables(c("x", "y", "spot", "proportion", "cumulative_proportion"
 #' @import dplyr
 #'
 #' @export
-scatterbar <- function(data, xy, size_x = NULL, size_y = NULL, padding_x=0, padding_y=0, show_legend = TRUE, legend_title="Group", colors = NULL) {
+scatterbar <- function(data, xy, size_x = NULL, size_y = NULL, padding_x=0, padding_y=0, show_legend = TRUE, legend_title="Group", colors = NULL, verbose = TRUE) {
 
   #Check that data and xy are either data.frames or matrices
   if( !is.matrix(data) & !is.data.frame(data) ){
@@ -106,6 +107,14 @@ scatterbar <- function(data, xy, size_x = NULL, size_y = NULL, padding_x=0, padd
   #Apply padding
   size_x <- size_x - padding_x
   size_y <- size_y - padding_y
+
+  #Print scaling and padding values if verbose is TRUE
+  if (verbose) {
+    message("Calculated size_x: ", size_x)
+    message("Calculated size_y: ", size_y)
+    message("Applied padding_x: ", padding_x)
+    message("Applied padding_y: ", padding_y)
+  }
 
   #Plot scatterbar, correcting the position of the bars within each (x, y) spot as they are plotted
   p <- ggplot2::ggplot(combined_data, ggplot2::aes(x = x, y = y - size_y/2 + cumulative_proportion*size_y + proportion*size_y/2)) +
