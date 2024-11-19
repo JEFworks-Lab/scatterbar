@@ -2,7 +2,7 @@
 #'
 #' @format A list of 2 objects, each of 260 rows and 2 columns: data, which contains the 8 deconvolved cell-types proportions for each 260 spots/pixels in a spatial transcriptomics experiment performed on mouse olfactory bulb tissue and xy, which contains the x and y-coordinates for each 260 spots/pixels on a mouse olfactory bulb tissue slide.
 #'
-#' @source \url{https://science.sciencemag.org/content/353/6294/78}
+#' @source \url{https://www.science.org/doi/10.1126/science.aaf2403}
 #'
 #' @usage data(mOB)
 "mOB"
