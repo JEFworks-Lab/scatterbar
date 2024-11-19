@@ -13,7 +13,8 @@ scatterbar(
   padding_y = 0,
   show_legend = TRUE,
   legend_title = "Group",
-  colors = NULL
+  colors = NULL,
+  verbose = TRUE
 )
 }
 \arguments{
@@ -34,6 +35,8 @@ scatterbar(
 \item{legend_title}{Custom title for the legend (default is "Group").}
 
 \item{colors}{Optional vector of colors to use for each category (default is NULL). If not provided, a default palette will be used.}
+
+\item{verbose}{Boolean indicating whether to print the calculated scaling and padding values (default is TRUE).}
 }
 \value{
 A ggplot object representing the scattered stacked bar chart plot.

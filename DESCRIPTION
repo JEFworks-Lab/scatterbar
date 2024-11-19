@@ -25,8 +25,5 @@ Depends: R (>= 3.5.0)
 Suggests: 
     knitr,
     rmarkdown,
-    SpatialExperiment,
-    SEraster,
     patchwork
 VignetteBuilder: knitr
-Remotes: JEFworks-Lab/SEraster, drighelli/SpatialExperiment

@@ -11,3 +11,4 @@
 ^images$
 ^\.github$
 ^scatterbar$
+^revdep$
