@@ -1,6 +1,6 @@
 ---
 title: "Customizing scatterbar"
-author: "Jean Fan and Dee Velazquez"
+author: "Dee Velazquez and Jean Fan"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >

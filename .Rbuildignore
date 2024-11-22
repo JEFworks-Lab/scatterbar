@@ -12,3 +12,4 @@
 ^\.github$
 ^scatterbar$
 ^revdep$
+^CRAN-SUBMISSION$
