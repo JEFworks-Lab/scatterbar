@@ -62,8 +62,8 @@
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Using scatterbar with a SpatialExperiment object</h1>
-                        <h4 data-toc-skip class="author">Jean Fan and
-Dee Velazquez</h4>
+                        <h4 data-toc-skip class="author">Dee Velazquez
+and Jean Fan</h4>
             
             <h4 data-toc-skip class="date">2024-11-26</h4>
       
@@ -164,6 +164,8 @@ Advances</em></a>.</p>
 <span><span class="co">#&gt; The following objects are masked from 'package:matrixStats':</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt;     anyMissing, rowMedians</span></span>
+<span><span class="co">#&gt; Warning: replacing previous import 'S4Arrays::makeNindexFromArrayViewport' by</span></span>
+<span><span class="co">#&gt; 'DelayedArray::makeNindexFromArrayViewport' when loading 'SummarizedExperiment'</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/JEFworks-Lab/SEraster" class="external-link">SEraster</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/JEFworks-Lab/scatterbar" class="external-link">scatterbar</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
@@ -316,7 +318,7 @@ into scatterbar.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">end.time</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.time</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">end.time</span> <span class="op">-</span> <span class="va">start.time</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Time difference of 0.3302364 secs</span></span></code></pre></div>
+<span><span class="co">#&gt; Time difference of 0.3328471 secs</span></span></code></pre></div>
 <p>This plot shows the proportion of each cell type within each pixel,
 with bars stacked to represent the composition of cell types. The colors
 correspond to different cell types, as defined by the custom color
