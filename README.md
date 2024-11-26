@@ -4,6 +4,8 @@
 # scatterbar
 
 <!-- badges: start -->
+[![R-CMD-check](https://github.com/JEFworks-Lab/scatterbar/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/JEFworks-Lab/scatterbar/actions/workflows/R-CMD-check.yaml)
+[![CRAN](https://www.r-pkg.org/badges/version/scatterbar)](https://CRAN.R-project.org/package=scatterbar)
 <!-- badges: end -->
 
 `scatterbar` is an open-source R package for displaying proportional data across spatially resolved contexts. This is the `scatterbar` R documentation
