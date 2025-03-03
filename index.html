@@ -11,8 +11,8 @@
 <script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Scattered Stacked Bar Chart Plots">
-<meta name="description" content="Provides a powerful and flexible tool for visualizing proportional data across spatially resolved contexts. By combining the concepts of scatter plots and stacked bar charts, `scatterbar` allows users to create scattered bar chart plots, which effectively display the proportions of different categories at each (x, y) location. This visualization is particularly useful for applications where understanding the distribution of categories across spatial coordinates is essential. This package features automatic determination of optimal scaling factors based on data, customizable scaling and padding options for both x and y axes, flexibility to specify custom colors for each category, options to customize the legend title, and integration with `ggplot2` for robust and high-quality visualizations. For more details, see Velazquez et al. (2024) &lt;doi:10.1101/2024.08.14.606810&gt;.">
-<meta property="og:description" content="Provides a powerful and flexible tool for visualizing proportional data across spatially resolved contexts. By combining the concepts of scatter plots and stacked bar charts, `scatterbar` allows users to create scattered bar chart plots, which effectively display the proportions of different categories at each (x, y) location. This visualization is particularly useful for applications where understanding the distribution of categories across spatial coordinates is essential. This package features automatic determination of optimal scaling factors based on data, customizable scaling and padding options for both x and y axes, flexibility to specify custom colors for each category, options to customize the legend title, and integration with `ggplot2` for robust and high-quality visualizations. For more details, see Velazquez et al. (2024) &lt;doi:10.1101/2024.08.14.606810&gt;.">
+<meta name="description" content="Provides a powerful and flexible tool for visualizing proportional data across spatially resolved contexts. By combining the concepts of scatter plots and stacked bar charts, scatterbar allows users to create scattered bar chart plots, which effectively display the proportions of different categories at each (x, y) location. This visualization is particularly useful for applications where understanding the distribution of categories across spatial coordinates is essential. This package features automatic determination of optimal scaling factors based on data, customizable scaling and padding options for both x and y axes, flexibility to specify custom colors for each category, options to customize the legend title, and integration with ggplot2 for robust and high-quality visualizations. For more details, see Velazquez et al. (2024) &lt;doi:10.1101/2024.08.14.606810&gt;.">
+<meta property="og:description" content="Provides a powerful and flexible tool for visualizing proportional data across spatially resolved contexts. By combining the concepts of scatter plots and stacked bar charts, scatterbar allows users to create scattered bar chart plots, which effectively display the proportions of different categories at each (x, y) location. This visualization is particularly useful for applications where understanding the distribution of categories across spatial coordinates is essential. This package features automatic determination of optimal scaling factors based on data, customizable scaling and padding options for both x and y axes, flexibility to specify custom colors for each category, options to customize the legend title, and integration with ggplot2 for robust and high-quality visualizations. For more details, see Velazquez et al. (2024) &lt;doi:10.1101/2024.08.14.606810&gt;.">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -38,7 +38,6 @@
 <li><a class="dropdown-item" href="articles/customizing_scatterbar.html">Customizing scatterbar</a></li>
     <li><a class="dropdown-item" href="articles/flipping-scatterbar-oreintations.html">Flipping scatterbar oreintations and positions</a></li>
     <li><a class="dropdown-item" href="articles/getting-started-with-scatterbars.html">Getting started with scatterbars</a></li>
-    <li><a class="dropdown-item" href="articles/using-scatterbar-with-spatial-experiment.html">Using scatterbar with a SpatialExperiment object</a></li>
     <li><a class="dropdown-item" href="articles/using-scatterbar-with-visium.html">Using scatterbar with Visium data</a></li>
     <li><a class="dropdown-item" href="articles/visualizing-multiple-datasets.html">Visualizing multiple datasets with scatterbar</a></li>
   </ul>
@@ -61,7 +60,7 @@
 <div class="page-header"><h1 id="scatterbar">scatterbar<a class="anchor" aria-label="anchor" href="#scatterbar"></a>
 </h1></div>
 <!-- badges: start -->
-
+<!-- badges: end -->
 <p><code>scatterbar</code> is an open-source R package for displaying proportional data across spatially resolved contexts. This is the <code>scatterbar</code> R documentation website. Questions, suggestions, or problems should be submitted as <a href="https://github.com/JEFworks-Lab/scatterbar/issues" class="external-link">GitHub issues</a>.</p>
 <p>
 </p>
@@ -90,7 +89,6 @@
 <ul>
 <li><a href="https://jef.works/scatterbar/articles/customizing_scatterbar.html" class="external-link">Customizing Scatterbar</a></li>
 <li><a href="https://jef.works/scatterbar/articles/getting-started-with-scatterbars.html" class="external-link">Getting Started With Scatterbar</a></li>
-<li><a href="https://jef.works/scatterbar/articles/using-scatterbar-with-spatial-experiment.html" class="external-link">Using Scatterbar With <code>SpatialExperiment</code></a></li>
 <li><a href="https://jef.works/scatterbar/articles/using-scatterbar-with-visium.html" class="external-link">Using Scatterbar With Visium Files</a></li>
 <li><a href="https://jef.works/scatterbar/articles/visualizing-multiple-datasets.html" class="external-link">Visualizing Multiple Datasets</a></li>
 <li><a href="https://jef.works/scatterbar/articles/flipping-scatterbar-oreintations.html" class="external-link">Flipping Scatterbar Oreintations</a></li>
@@ -99,8 +97,8 @@
 <div class="section level2">
 <h2 id="citation">Citation<a class="anchor" aria-label="anchor" href="#citation"></a>
 </h2>
-<p>Our preprint describing <code>scatterbar</code> is available on <em>bioRxiv</em>:</p>
-<p><a href="https://doi.org/10.1101/2024.08.14.606810" class="external-link">Velazquez D. et al. (2024), “scatterbar: an R package for visualizing proportional data across spatially resolved coordinates”, <em>bioRxiv</em></a></p>
+<p>Our paper describing <code>scatterbar</code> is available on <em>Oxford Bioinformatics</em>:</p>
+<p><a href="https://doi.org/10.1093/bioinformatics/btaf047" class="external-link">Velazquez D. et al. (2025), “scatterbar: an R package for visualizing proportional data across spatially resolved coordinates”, <em>Bioinformatics</em></a></p>
 </div>
 </div>
   </main><aside class="col-md-3"><div class="links">
@@ -136,13 +134,7 @@
 </ul>
 </div>
 
-<div class="dev-status">
-<h2 data-toc-skip>Dev status</h2>
-<ul class="list-unstyled">
-<li><a href="https://github.com/JEFworks-Lab/scatterbar/actions/workflows/R-CMD-check.yaml" class="external-link"><img src="https://github.com/JEFworks-Lab/scatterbar/actions/workflows/R-CMD-check.yaml/badge.svg" alt="R-CMD-check"></a></li>
-<li><a href="https://CRAN.R-project.org/package=scatterbar" class="external-link"><img src="https://www.r-pkg.org/badges/version/scatterbar" alt="CRAN"></a></li>
-</ul>
-</div>
+
 
   </aside>
 </div>

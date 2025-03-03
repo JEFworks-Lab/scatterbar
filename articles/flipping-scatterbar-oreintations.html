@@ -36,7 +36,6 @@
 <li><a class="dropdown-item" href="../articles/customizing_scatterbar.html">Customizing scatterbar</a></li>
     <li><a class="dropdown-item" href="../articles/flipping-scatterbar-oreintations.html">Flipping scatterbar oreintations and positions</a></li>
     <li><a class="dropdown-item" href="../articles/getting-started-with-scatterbars.html">Getting started with scatterbars</a></li>
-    <li><a class="dropdown-item" href="../articles/using-scatterbar-with-spatial-experiment.html">Using scatterbar with a SpatialExperiment object</a></li>
     <li><a class="dropdown-item" href="../articles/using-scatterbar-with-visium.html">Using scatterbar with Visium data</a></li>
     <li><a class="dropdown-item" href="../articles/visualizing-multiple-datasets.html">Visualizing multiple datasets with scatterbar</a></li>
   </ul>
@@ -65,9 +64,9 @@
                         <h4 data-toc-skip class="author">Dee Velazquez
 and Jean Fan</h4>
             
-            <h4 data-toc-skip class="date">2024-11-26</h4>
+            <h4 data-toc-skip class="date">2025-03-03</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/JEFworks-Lab/scatterbar/blob/main/vignettes/flipping-scatterbar-oreintations.Rmd" class="external-link"><code>vignettes/flipping-scatterbar-oreintations.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/JEFworks-Lab/scatterbar/blob/cran/vignettes/flipping-scatterbar-oreintations.Rmd" class="external-link"><code>vignettes/flipping-scatterbar-oreintations.Rmd</code></a></small>
       <div class="d-none name"><code>flipping-scatterbar-oreintations.Rmd</code></div>
     </div>
 
@@ -95,6 +94,7 @@ the adult mouse brain is now displayed horizontally.</p>
 <span><span class="co"># Rename the columns to ensure the position data has the correct column names</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/colnames.html" class="external-link">colnames</a></span><span class="op">(</span><span class="va">flipped_pos</span><span class="op">)</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">'x'</span>,<span class="st">'y'</span><span class="op">)</span></span>
 <span><span class="co"># Create the scatterbar plot with the flipped position data</span></span>
+<span><span class="va">start.time</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.time</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="fu">scatterbar</span><span class="fu">::</span><span class="fu"><a href="../reference/scatterbar.html">scatterbar</a></span><span class="op">(</span><span class="va">adult_mouse_brain_ffpe</span><span class="op">$</span><span class="va">prop</span>, </span>
 <span>                       <span class="va">flipped_pos</span>, padding_x <span class="op">=</span> <span class="fl">0.3</span>, padding_y <span class="op">=</span> <span class="fl">0.3</span>,</span>
 <span>                       size_x <span class="op">=</span> <span class="fl">220</span>, size_y <span class="op">=</span> <span class="fl">220</span>,</span>
@@ -103,13 +103,18 @@ the adult mouse brain is now displayed horizontally.</p>
 <span><span class="co">#&gt; Calculated size_y: 219.7</span></span>
 <span><span class="co">#&gt; Applied padding_x: 0.3</span></span>
 <span><span class="co">#&gt; Applied padding_y: 0.3</span></span></code></pre></div>
-<p><img src="flipping-scatterbar-oreintations_files/figure-html/flipped%20plot-1.png" width="700">
-We can also change the orientation of the stacked bar charts themselves
-and how they are displayed. With <code><a href="https://ggplot2.tidyverse.org/reference/coord_flip.html" class="external-link">coord_flip()</a></code>, the adult
-mouse brain is now displayed vertically once more, but the stacked bar
-charts are now displayed horizontally.</p>
+<p><img src="flipping-scatterbar-oreintations_files/figure-html/flipped%20plot-1.png" width="700"></p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">end.time</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.time</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">end.time</span> <span class="op">-</span> <span class="va">start.time</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Time difference of 0.3104167 secs</span></span></code></pre></div>
+<p>We can also change the orientation of the stacked bar charts
+themselves and how they are displayed. With <code><a href="https://ggplot2.tidyverse.org/reference/coord_flip.html" class="external-link">coord_flip()</a></code>,
+the adult mouse brain is now displayed vertically once more, but the
+stacked bar charts are now displayed horizontally.</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Create the scatterbar plot with the flipped scatterbar oreintation</span></span>
+<span><span class="va">start.time</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.time</a></span><span class="op">(</span><span class="op">)</span></span>
 <span><span class="fu">scatterbar</span><span class="fu">::</span><span class="fu"><a href="../reference/scatterbar.html">scatterbar</a></span><span class="op">(</span><span class="va">adult_mouse_brain_ffpe</span><span class="op">$</span><span class="va">prop</span>, </span>
 <span>                       <span class="va">flipped_pos</span>, padding_x <span class="op">=</span> <span class="fl">0.3</span>, padding_y <span class="op">=</span> <span class="fl">0.3</span>,</span>
 <span>                       size_x <span class="op">=</span> <span class="fl">220</span>, size_y <span class="op">=</span> <span class="fl">220</span>,</span>
@@ -121,6 +126,10 @@ charts are now displayed horizontally.</p>
 <span><span class="co">#&gt; Coordinate system already present. Adding new coordinate system, which will</span></span>
 <span><span class="co">#&gt; replace the existing one.</span></span></code></pre></div>
 <p><img src="flipping-scatterbar-oreintations_files/figure-html/flipped%20orientation-1.png" width="700"></p>
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">end.time</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/Sys.time.html" class="external-link">Sys.time</a></span><span class="op">(</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/print.html" class="external-link">print</a></span><span class="op">(</span><span class="va">end.time</span> <span class="op">-</span> <span class="va">start.time</span><span class="op">)</span></span>
+<span><span class="co">#&gt; Time difference of 0.3728185 secs</span></span></code></pre></div>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>
